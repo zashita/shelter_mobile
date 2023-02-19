@@ -25,7 +25,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import Animals from "./pages/animals/Animals";
+import Animals from "./Animals";
 
 
 

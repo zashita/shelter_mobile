@@ -25,52 +25,62 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import Categories from "./Categories";
+import Categories from "../components/Categories";
+import Search from "../components/SearchBlock";
+import Navbar from "../components/Navbar";
+import Wrapper from "../components/Wrapper";
+import AnimalsList, { animals_example } from "../components/AnimalsList";
 
 
 
 const Animals = () => {
   return (
-    <SafeAreaView style={styles.background}>
+    <View style={styles.background}>
       <View style={styles.location_block}>
           <Image style={styles.location_image} source={{uri: "https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_location_on_48px-512.png"}}/>
           <Text style= {{color: '#000'}}>Минск, </Text>
           <Text>Беларусь</Text>
       </View>
       <View style={styles.main_block}>
-          <TextInput placeholder={`Найти`} style={styles.input}/>
+        <Wrapper>
+          <Search/>
           <View style={styles.categories_container}>
             <Categories title={`Собаки`}>
               <Image
-                source={require(`../../assets/svg/dog.png`)}
+                source={require("../assets/img/dog.png")}
                 style={styles.choise_img}
               />
             </Categories>
 
             <Categories title={`Коты`}>
               <Image
-                source={require(`../../assets/svg/cat.png`)}
+                source={require(`../assets/img/cat.png`)}
                 style={styles.choise_img}
               />
             </Categories>
 
             <Categories title={`Другие`}>
               <Image
-                source={require(`../../assets/svg/other.png`)}
+                source={require(`../assets/img/other.png`)}
                 style={styles.choise_img}
               />
             </Categories>
 
             <Categories title={`Понравились`}>
               <Image
-                source={require(`../../assets/svg/liked.png`)}
+                source={require(`../assets/img/liked.png`)}
                 style={styles.choise_img}
               />
             </Categories>
           </View>
+          <AnimalsList animals={animals_example}/>
 
+        </Wrapper>
+        <Navbar/>
       </View>
-    </SafeAreaView>
+
+
+    </View>
 
 
   );
@@ -81,14 +91,12 @@ export default Animals;
 const styles = StyleSheet.create({
   background:{
     backgroundColor: `#FF9D01`,
-    height: 2000,
 
   },
   location_block:{
     marginLeft: 'auto',
     marginRight: `auto`,
     top: 50,
-    zIndex: 5000,
     display: `flex`,
     flexDirection: "row",
     marginBottom: 75,
@@ -104,25 +112,14 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   main_block: {
-
-    height: 1000,
+    height: 764,
     backgroundColor: `#F4F4F4`,
     borderRadius: 40,
-    padding: 25,
   },
-  input: {
-    width: 273,
-    backgroundColor: `#fff`,
-    fontSize: 15,
-    fontWeight: `400`,
-    textAlign: `left`,
-    color: `#C1C1C1`,
-    marginBottom: 31,
 
-  },
   choise_img:{
-    width: 48,
-    height:48,
+    // width: 48,
+    // height:48,
   },
   categories_container:{
     display: "flex",

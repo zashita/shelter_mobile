@@ -30,6 +30,7 @@ import Search from "../components/SearchBlock";
 import Navbar from "../components/Navbar";
 import Wrapper from "../components/Wrapper";
 import AnimalsList, { animals_example } from "../components/AnimalsList";
+import LinearGradient from 'react-native-linear-gradient';
 
 
 
@@ -41,43 +42,16 @@ const Animals = () => {
           <Text style= {{color: '#000'}}>Минск, </Text>
           <Text>Беларусь</Text>
       </View>
+      <LinearGradient colors={['#F4F4F4', "#F4F4F4", '#FF9D0100']} style={styles.linearGradient}>
       <View style={styles.main_block}>
         <Wrapper>
           <Search/>
-          <View style={styles.categories_container}>
-            <Categories title={`Собаки`}>
-              <Image
-                source={require("../assets/img/dog.png")}
-                style={styles.choise_img}
-              />
-            </Categories>
-
-            <Categories title={`Коты`}>
-              <Image
-                source={require(`../assets/img/cat.png`)}
-                style={styles.choise_img}
-              />
-            </Categories>
-
-            <Categories title={`Другие`}>
-              <Image
-                source={require(`../assets/img/other.png`)}
-                style={styles.choise_img}
-              />
-            </Categories>
-
-            <Categories title={`Понравились`}>
-              <Image
-                source={require(`../assets/img/liked.png`)}
-                style={styles.choise_img}
-              />
-            </Categories>
-          </View>
           <AnimalsList animals={animals_example}/>
 
         </Wrapper>
         <Navbar/>
       </View>
+      </LinearGradient>
 
 
     </View>
@@ -113,7 +87,8 @@ const styles = StyleSheet.create({
   },
   main_block: {
     height: 764,
-    backgroundColor: `#F4F4F4`,
+    // backgroundColor: `#F4F4F4`,
+    backgroundColor: 'transparent',
     borderRadius: 40,
   },
 
@@ -125,6 +100,9 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     columnGap: 22,
+  },
+  linearGradient: {
+    borderRadius: 40,
   }
 
 

@@ -9,23 +9,44 @@ export interface IAnimalListProps {
 export const animals_example = [
   {
     key: 1,
-    name: 'Simba',
-    sex: 'female',
-    age: 2,
+    name: 'Name',
+    description: 'type',
+    age: 0,
     shelter: 'shelter_name',
   },
   {
     key: 2,
-    name: 'Simba',
-    sex: 'female',
-    age: 2,
+    name: 'Name',
+    description: 'type',
+    age: 0,
     shelter: 'shelter_name',
   },
   {
     key: 3,
-    name: 'Simba',
-    sex: 'female',
-    age: 2,
+    name: 'Name',
+    description: 'type',
+    age: 0,
+    shelter: 'shelter_name',
+  },
+  {
+    key: 3,
+    name: 'Name',
+    description: 'type',
+    age: 0,
+    shelter: 'shelter_name',
+  },
+  {
+    key: 3,
+    name: 'Name',
+    description: 'type',
+    age: 0,
+    shelter: 'shelter_name',
+  },
+  {
+    key: 3,
+    name: 'Name',
+    description: 'type',
+    age: 0,
     shelter: 'shelter_name',
   },
 ];
@@ -41,7 +62,7 @@ const AnimalsList: React.FC<IAnimalListProps> = props => {
         <View style={styles.info_container}>
           <View style={styles.info_line}>
             <Text style={styles.name_text}>{animal.name}</Text>
-            <Image source={require('../../assets/img/sexexample.png')} />
+            <Text style={styles.description_text}>{animal.description}</Text>
           </View>
           <Text style={styles.age_text}>{animal.age}</Text>
           <View style={styles.info_line}>
@@ -49,13 +70,15 @@ const AnimalsList: React.FC<IAnimalListProps> = props => {
               <Image source={require('../../assets/img/location.png')} />
               <Text style={styles.location_text}>{animal.shelter}</Text>
             </View>
-            <Image source={require('../../assets/img/like.png')} />
           </View>
+          <Image style={styles.like_img} source={require('../../assets/img/like.png')} />
         </View>
       </View>
     );
   });
-  return <ScrollView style={{height: 500}}>{AnimalsViewList}</ScrollView>;
+  return <ScrollView
+    style={
+    {height: 636}}>{AnimalsViewList}</ScrollView>;
 };
 
 export default AnimalsList;

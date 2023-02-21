@@ -1,19 +1,23 @@
 .card{
-  width: 340px;
-  height: 240px;
+  width: 100%;
+  height: 200px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  background: #FFFFFF;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  margin-bottom: 25px;
 
 }
 .info_container{
   width: 169px;
-  height: 119px;
+  height: 100%;
 
   background: #FFFFFF;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
   border-radius: 0 10px 10px 0;
-  padding: 12px;
+  padding: 42px 12px 12px 12px;
 }
 
 .info_line{
@@ -23,6 +27,7 @@
   justify-content: space-between;
   align-items: center;
 }
+
 .location{
   display: flex;
   flex-direction: row;
@@ -33,8 +38,10 @@
   color: black;
 }
 .animal_img{
-  border-radius: 10px;
+  border-radius: 7px;
   width: 171px;
+  height: 190px;
+  margin-left: 5px;
 }
 
 .name_text{
@@ -61,6 +68,20 @@
   font-size: 12px;
   line-height: 15px;
   color: #888888;
+}
+.description_text{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #7C7C7C;
+}
+.like_img{
+  width: 25px;
+  height: 22.44px;
+  margin-top: 25px;
+  margin-left: 120px;
 }
 
 

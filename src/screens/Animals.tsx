@@ -17,11 +17,12 @@ import {
   useColorScheme,
   View
 } from "react-native";
+import LocationSVG from '../assets/img/locationblack.svg';
+import Header from '../components/Header/index'
 
 import {
   Colors,
   DebugInstructions,
-  Header,
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
@@ -38,7 +39,9 @@ const Animals = () => {
   return (
     <View style={styles.background}>
       <View style={styles.location_block}>
-          <Image style={styles.location_image} source={{uri: "https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_location_on_48px-512.png"}}/>
+        <View style={styles.location_image}>
+          <LocationSVG/>
+        </View>
           <Text style= {{color: '#000'}}>Минск, </Text>
           <Text>Беларусь</Text>
       </View>
@@ -81,8 +84,6 @@ const styles = StyleSheet.create({
 
   },
   location_image:{
-    width:10,
-    height: 15,
     marginRight: 10,
   },
   main_block: {

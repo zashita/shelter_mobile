@@ -9,8 +9,9 @@ import React from 'react';
 import Animals from './Animals';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import SearchBlock from "../components/SearchBlock";
-import Profile from "./Profile";
+import SearchBlock from '../components/SearchBlock';
+import Profile from './Profile';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -28,7 +29,7 @@ function App() {
     //     <Stack.Screen name={"Profile"} component={Profile}/>
     //   </Stack.Navigator>
     // </NavigationContainer>
-    <Animals/>
+    <Animals />
   );
 }
 

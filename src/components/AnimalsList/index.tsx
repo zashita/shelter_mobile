@@ -1,6 +1,8 @@
 import React from 'react';
 import {Image, ScrollView, Text, View} from 'react-native';
 import styles from './style.scss';
+import LocationSVG from '../../assets/img/location.svg';
+import LikeSVG from '../../assets/img/Like.svg';
 
 export interface IAnimalListProps {
   animals: any;
@@ -67,11 +69,13 @@ const AnimalsList: React.FC<IAnimalListProps> = props => {
           <Text style={styles.age_text}>{animal.age}</Text>
           <View style={styles.info_line}>
             <View style={styles.location}>
-              <Image source={require('../../assets/img/location.png')} />
+              <LocationSVG/>
               <Text style={styles.location_text}>{animal.shelter}</Text>
             </View>
           </View>
-          <Image style={styles.like_img} source={require('../../assets/img/like.png')} />
+          <View style={styles.like_img}>
+            <LikeSVG/>
+          </View>
         </View>
       </View>
     );

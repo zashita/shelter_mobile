@@ -11,6 +11,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import SearchBlock from '../components/SearchBlock';
 import Profile from './Profile';
+import LogIn from "./LogIn";
 
 
 const Stack = createNativeStackNavigator();
@@ -29,7 +30,8 @@ function App() {
     //     <Stack.Screen name={"Profile"} component={Profile}/>
     //   </Stack.Navigator>
     // </NavigationContainer>
-    <Animals />
+    // <Animals />
+      <LogIn/>
   );
 }
 

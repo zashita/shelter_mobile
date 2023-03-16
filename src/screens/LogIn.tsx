@@ -1,8 +1,18 @@
 import React from 'react';
-import {Button, Image, Text, TextInput, View} from "react-native";
-import styles from "../global/screen_styles/login.scss"
+import { Alert, Button, Image, Text, TextInput, View } from "react-native";
+import styles from "./screen_styles/login.scss"
 import CustomButton from "../components/CustomButton";
-const LogIn = () => {
+
+export interface ILogInProps{
+  navigation: any;
+}
+
+const LogIn = (props: ILogInProps) => {
+
+  const login = () =>{
+    props.navigation.navigate("Animals")
+
+  }
     return (
         <View style={styles.background}>
             <Image style={styles.logo} source ={require('../assets/img/Logo.png')}/>
@@ -11,7 +21,8 @@ const LogIn = () => {
             <CustomButton
                 style={styles.button}
                 title={"Продолжить"}
-            text_style={styles.button_text}/>
+            text_style={styles.button_text}
+            onPress={login}/>
 
         </View>
     );

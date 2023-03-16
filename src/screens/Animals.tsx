@@ -33,9 +33,13 @@ import Wrapper from "../components/Wrapper";
 import AnimalsList, { animals_example } from "../components/AnimalsList";
 import LinearGradient from 'react-native-linear-gradient';
 
+export interface IAnimalsProps{
+  navigation: any;
+}
 
 
-const Animals = () => {
+
+const Animals = (props: IAnimalsProps) => {
   return (
     <View style={styles.background}>
       <View style={styles.location_block}>
@@ -49,7 +53,7 @@ const Animals = () => {
       <View style={styles.main_block}>
         <Wrapper>
           <Search/>
-          <AnimalsList animals={animals_example}/>
+          <AnimalsList navigation={props.navigation} animals={animals_example}/>
 
         </Wrapper>
         <Navbar/>

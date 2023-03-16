@@ -1,0 +1,33 @@
+.button{
+  height: 30px;
+  width: 14px;
+}
+
+.top_container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 470px;
+  background-color: #FF9D01;
+  padding-top: 30px;
+}
+
+.animal_image{
+  width: 260px;
+  height: 380px;
+
+}
+.bottom_container{
+  width: 90%;
+  background-color: white;
+  border-radius: 20px;
+  margin-top: -40px;
+  height: 400px;
+  align-self: center;
+
+}
+.global_container{
+background-color: white;
+  height: 100%;
+
+}

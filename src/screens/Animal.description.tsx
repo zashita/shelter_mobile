@@ -1,8 +1,7 @@
 import React from "react";
 import { Image, SafeAreaView, View } from "react-native";
 import {Button} from "react-native-paper";
-import style from './screen_styles/animals.description.scss'
-import styles from "../components/AnimalsList/style.scss";
+import style from '../styles/animals.description.scss'
 
 const AnimalDescription = () => {
   return (

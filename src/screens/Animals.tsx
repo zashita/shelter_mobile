@@ -52,7 +52,7 @@ const Animals = (props: IAnimalsProps) => {
       <LinearGradient colors={['#F4F4F4', "#F4F4F4", '#FF9D0100']} style={styles.linearGradient}>
       <View style={styles.main_block}>
         <Wrapper>
-          <Search/>
+          <Search navigation = {props.navigation}/>
           <AnimalsList navigation={props.navigation} animals={animals_example}/>
 
         </Wrapper>

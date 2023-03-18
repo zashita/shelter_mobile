@@ -1,6 +1,6 @@
 import React from 'react';
 import { Alert, Button, Image, Text, TextInput, View } from "react-native";
-import styles from "./screen_styles/login.scss"
+import styles from "../styles/login.scss"
 import CustomButton from "../components/CustomButton";
 
 export interface ILogInProps{

@@ -37,20 +37,30 @@ const Filters = (props: IFiltersProps) => {
                             <Button buttonColor={'#FFF'} mode = {'contained'}>
                                 Собаки
                             </Button>
-                            <Button buttonColor={'#FFf'} mode = {'contained'}>
+                            <Button
+                                buttonColor={'#FFf'}
+                                mode = {'contained'}>
                                 Коты
                             </Button>
-                            <Button buttonColor={'#FFf'} mode = {'contained'}>
+                            <Button
+                                buttonColor={'#FFf'}
+                                mode = {'contained'}>
                                 Другие
                             </Button>
                         </View>
 
                         <Text style={{color: 'gray', marginBottom: 10}}>Пол</Text>
-                        <View style={{display: 'flex', flexDirection: 'row', columnGap: 20, marginBottom: 40}}>
-                            <Button buttonColor={'#FFF'} mode = {'contained'}>
+                        <View
+                            style={{display: 'flex', flexDirection: 'row',
+                                columnGap: 20, marginBottom: 40}}>
+                            <Button
+                                buttonColor={'#FFF'}
+                                mode = {'contained'}>
                                 Мужской
                             </Button>
-                            <Button buttonColor={'#FFf'} mode = {'contained'}>
+                            <Button
+                                buttonColor={'#FFf'}
+                                mode = {'contained'}>
                                 Женский
                             </Button>
                         </View>
@@ -81,21 +91,33 @@ const Filters = (props: IFiltersProps) => {
                             </TextInput>
                         </View>
                         <View style = {{marginBottom: 40}}>
-                            <ProgressBar progress={0.5} color={'gray'} />
+                            <ProgressBar
+                                progress={0.5}
+                                color={'gray'} />
                         </View>
 
                         <Text style={{color: 'gray', marginBottom: 10}}>Возраст</Text>
 
-                        <View style={{display: 'flex', flexDirection: 'row', columnGap: 20, marginBottom: 20}}>
-                            <Button buttonColor={'#FFF'} mode = {'contained'}>
+                        <View
+                            style={{display: 'flex', flexDirection: 'row',
+                                columnGap: 20, marginBottom: 20}}>
+                            <Button
+                                buttonColor={'#FFF'}
+                                mode = {'contained'}
+                                >
                                 Кастрирован
                             </Button>
-                            <Button buttonColor={'#FFf'} mode = {'contained'}>
+                            <Button
+                                buttonColor={'#FFf'}
+                                mode = {'contained'}>
                                 Стерилизован
                             </Button>
 
                         </View>
-                        <Button buttonColor={'#FFf'} mode = {'contained'} style={{width: '60%'}}>
+                        <Button
+                            buttonColor={'#FFf'}
+                            mode = {'contained'}
+                            style={{width: '60%'}}>
                             Есть прививка
                         </Button>
 
@@ -103,7 +125,10 @@ const Filters = (props: IFiltersProps) => {
                     </Wrapper>
                     <View style={{position: 'absolute',
                         bottom: 25, width: '100%', justifyContent: 'center', alignItems: 'center'}}>
-                        <Button buttonColor={'#D9D9D9'} mode ={"contained"} style={{width: "40%"}}>
+                        <Button
+                            buttonColor={'#D9D9D9'}
+                            mode ={"contained"}
+                            style={{width: "40%"}}>
                             Применить
                         </Button>
                     </View>

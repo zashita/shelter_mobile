@@ -1,6 +1,7 @@
 .button{
   height: 30px;
-  width: 14px;
+  width: 30px;
+  justify-self: center;
 }
 
 .top_container{
@@ -10,11 +11,15 @@
   height: 470px;
   background-color: #FF9D01;
   padding-top: 30px;
+  padding-left: 10px;
+
+
 }
 
 .animal_image{
   width: 260px;
   height: 380px;
+  border-radius: 20px;
 
 }
 .bottom_container{
@@ -30,4 +35,34 @@
 background-color: white;
   height: 100%;
 
+}
+
+.bottom_container{
+  padding: 20px;
+}
+
+.name_text{
+  color: #000;
+  font-size: 24px;
+  margin-bottom: 20px;
+
+}
+
+.main_info_text{
+  color: #7C7C7C;
+  font-size: 16px;
+  margin-bottom: 40px;
+}
+
+.main_info_container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.additional_info_text{
+  color: #000;
+  font-size: 15px;
+  margin-bottom: 20px;
 }

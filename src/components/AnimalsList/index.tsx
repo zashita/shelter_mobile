@@ -3,7 +3,7 @@ import { Alert, Image, ScrollView, Text, View } from "react-native";
 import styles from './style.scss';
 import LocationSVG from '../../assets/img/location.svg';
 import LikeSVG from '../../assets/img/Like.svg';
-import currentanimal from '../../store/Animals'
+import currentanimal from '../../store/CurrentAnimal'
 import {IAnimal} from "../../types/Animal";
 
 export interface IAnimalListProps {

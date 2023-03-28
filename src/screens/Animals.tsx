@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   Image,
@@ -32,6 +32,8 @@ import Navbar from "../components/Navbar";
 import Wrapper from "../components/Wrapper";
 import AnimalsList, { animals_example } from "../components/AnimalsList";
 import LinearGradient from 'react-native-linear-gradient';
+import AnimalsArr from '../store/Animals'
+import {observer} from "mobx-react-lite";
 
 export interface IAnimalsProps{
   navigation: any;
@@ -39,7 +41,12 @@ export interface IAnimalsProps{
 
 
 
-const Animals = (props: IAnimalsProps) => {
+const Animals = observer((props: IAnimalsProps) => {
+
+  useEffect(()=>{
+      AnimalsArr.setAnimals()
+
+  }, [])
   return (
     <View style={styles.background}>
       <View style={styles.location_block}>
@@ -53,7 +60,7 @@ const Animals = (props: IAnimalsProps) => {
       <View style={styles.main_block}>
         <Wrapper>
           <Search navigation = {props.navigation}/>
-          <AnimalsList navigation={props.navigation} animals={animals_example}/>
+          <AnimalsList navigation={props.navigation} animals={AnimalsArr.animals}/>
 
         </Wrapper>
         <Navbar/>
@@ -65,7 +72,7 @@ const Animals = (props: IAnimalsProps) => {
 
 
   );
-};
+})
 
 export default Animals;
 

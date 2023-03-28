@@ -10,6 +10,8 @@ export interface IAnimal{
     sterilized: boolean;
     vaccinated: boolean;
 
+    shelter: string
+
 
 
 }

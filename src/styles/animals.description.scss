@@ -8,8 +8,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 470px;
-  background-color: #FF9D01;
+  background-color: #ffffff;
   padding-top: 30px;
   padding-left: 10px;
 
@@ -17,17 +16,18 @@
 }
 
 .animal_image{
-  width: 260px;
-  height: 380px;
-  border-radius: 20px;
+  width: 160px;
+  height: 160px;
+  border-radius: 228px;
+  align-self: center;
+  margin-top: 30px;
 
 }
 .bottom_container{
   width: 90%;
-  background-color: white;
   border-radius: 20px;
-  margin-top: -40px;
-  height: 400px;
+  margin-top: 0;
+  height: 600px;
   align-self: center;
 
 }
@@ -45,13 +45,37 @@ background-color: white;
   color: #000;
   font-size: 24px;
   margin-bottom: 20px;
+  align-self: center;
 
+}
+
+.other_info_container{
+  background: #EDEDED;
+  border-radius: 8px;
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+
+}
+
+.other_info_text{
+  background: #FFD5B0;
+  border-radius: 10px;
+  color: black;
+  padding: 9px;
+  font-size: 14px;
 }
 
 .main_info_text{
   color: #7C7C7C;
   font-size: 16px;
-  margin-bottom: 40px;
+  margin-bottom: 15px;
+}
+
+.main_info_text_field{
+  color: #000;
+  font-size: 16px;
+  margin-bottom: 15px;
 }
 
 .main_info_container{
@@ -59,6 +83,7 @@ background-color: white;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  width: 60%;
 }
 
 .additional_info_text{

@@ -1,30 +1,18 @@
 import {IAnimal} from "../types/Animal";
 import {makeAutoObservable} from "mobx";
+import axios from "axios";
 
+class Animals{
 
-class CurrentAnimal{
-    currentAnimal: IAnimal = {
-        id: 'vjadvh7vgsdifv',
-        age: 3,
-        name: 'mobx',
-        sex: 'female',
-        type: 'other',
-
-        description: 'string',
-        castrated: false,
-        sterilized: false,
-        vaccinated: false
-    };
-
+    animals: IAnimal[] = []
 
     constructor() {
         makeAutoObservable(this)
-        }
-        setCurrentAnimal(animal:IAnimal){
-            this.currentAnimal = animal
-        }
     }
+    async setAnimals(){
+        const response = await axios.get('https://64202b9225cb65721043b12e.mockapi.io/shelter/animals')
+        this.animals = response.data;
+    }
+}
 
-    export default new CurrentAnimal();
-
-
+export default new Animals();

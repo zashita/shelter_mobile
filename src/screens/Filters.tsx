@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View} from "react-native";
+import {StyleSheet, TextInput, View} from "react-native";
 import LocationSVG from "../assets/img/locationblack.svg";
 import LinearGradient from "react-native-linear-gradient";
 import Wrapper from "../components/Wrapper";
@@ -7,8 +7,10 @@ import Search from "../components/SearchBlock";
 import AnimalsList, {animals_example} from "../components/AnimalsList";
 import Navbar from "../components/Navbar";
 import FilterSVG from '../assets/img/FiltrIconWhite.svg'
-import {Button, ProgressBar, TextInput, ToggleButton} from "react-native-paper";
+import {Button, ProgressBar, ToggleButton} from "react-native-paper";
 import {Text} from 'react-native-paper'
+import {TextField} from "@mui/material";
+import style from '../styles/filters.scss'
 
 
 export interface IFiltersProps{
@@ -64,31 +66,16 @@ const Filters = (props: IFiltersProps) => {
                                 Женский
                             </Button>
                         </View>
-                        <Text style={{color: 'gray', marginBottom: 10}}>Возраст</Text>
-                        <View style={{display: 'flex', flexDirection: 'row', columnGap: 20, marginBottom: 40}}>
-                            <TextInput
-                                textColor={'#6A6D76'}
-                                outlineColor={'#FF9D01'}
-                                activeOutlineColor={'#FF9D01'}
-                                activeUnderlineColor={'#FF9D01'}
-                                underlineStyle={{display: 'none'}}
-                                style={{backgroundColor: '#fff',
-                                borderRadius: 20, width: '45%'}}
-                                >
+                        <Text
+                            style={{color: 'gray', marginBottom: 10}}>
+                            Возраст
+                        </Text>
+                        <View
+                            style={{display: 'flex', flexDirection: 'row',
+                                columnGap: 20, marginBottom: 40}}>
+                            <TextInput maxLength={1} style={style.age_input}/>
+                            <TextInput maxLength={2} style={style.age_input}/>
 
-                            </TextInput>
-
-                            <TextInput
-                                textColor={'#6A6D76'}
-                                outlineColor={'#FF9D01'}
-                                activeOutlineColor={'#FF9D01'}
-                                activeUnderlineColor={'#FF9D01'}
-                                underlineStyle={{display: 'none'}}
-                                style={{backgroundColor: '#fff',
-                                    borderRadius: 20, width: '45%'}}
-                            >
-
-                            </TextInput>
                         </View>
                         <View style = {{marginBottom: 40}}>
                             <ProgressBar

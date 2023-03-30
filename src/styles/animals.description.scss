@@ -62,8 +62,17 @@ background-color: white;
   background: #FFD5B0;
   border-radius: 10px;
   color: black;
-  padding: 9px;
+  padding: 6px 14px;
   font-size: 14px;
+}
+.top_divider{
+  width: 251px;
+  height: 9px;
+  align-self: center;
+  margin-top: 15px;
+
+  background: #D9D9D9;
+  border-radius: 10px;
 }
 
 .main_info_text{

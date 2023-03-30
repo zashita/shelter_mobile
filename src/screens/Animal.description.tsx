@@ -22,6 +22,9 @@ const AnimalDescription = () => {
 
   return (
     <View style={style.global_container}>
+      <View style={style.top_divider}>
+
+      </View>
     <View style={style.top_container}>
       <Button icon={ShareSVG} mode="contained" buttonColor={"transparent"} style={style.button}>
 
@@ -93,7 +96,7 @@ const AnimalDescription = () => {
         <YaMap
             showUserPosition={false}
             rotateGesturesEnabled={false}
-            nightMode={true}
+            nightMode={false}
             mapType={'vector'}
             initialRegion={{
               lat: 30,
@@ -101,23 +104,13 @@ const AnimalDescription = () => {
               zoom: 7,
               azimuth: 0,
             }}
-
+          style = {{width: '100%', height: 300, borderRadius: 10, borderWidth: 3, borderStyle: 'solid', borderColor: '#000'}}
         >
-
           <Marker
               point={{ lat: 30, lon: 30 }}
-              zIndex={4}
           />
-
-          <Circle
-              center={{lat: 30, lon: 30}}
-              radius={60000}
-              fillColor='#5789d9'
-              strokeColor='#154ca3'
-              strokeWidth={4}
-              zIndex={5} />
-
         </YaMap>
+
 
 
 

@@ -5,7 +5,7 @@
  * @format
  */
 
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   Image,
@@ -34,6 +34,9 @@ import AnimalsList, { animals_example } from "../components/AnimalsList";
 import LinearGradient from 'react-native-linear-gradient';
 import AnimalsArr from '../store/Animals'
 import {observer} from "mobx-react-lite";
+import {ActivityIndicator} from "react-native-paper";
+import MainLayout from "../Layouts/MainLayout";
+import Navigation from '../store/Navigation'
 
 export interface IAnimalsProps{
   navigation: any;
@@ -41,34 +44,30 @@ export interface IAnimalsProps{
 
 
 
-const Animals = observer((props: IAnimalsProps) => {
+const Animals:React.FC<IAnimalsProps> = observer(({navigation}) => {
+  const [loading, setLoading] = useState(true)
 
   useEffect(()=>{
-      AnimalsArr.setAnimals()
+      AnimalsArr.setAnimals().then(response => setLoading(false))
 
   }, [])
   return (
-    <View style={styles.background}>
-      <View style={styles.location_block}>
-        <View style={styles.location_image}>
-          <LocationSVG/>
-        </View>
-          <Text style= {{color: '#000'}}>Минск, </Text>
-          <Text>Беларусь</Text>
-      </View>
-      <LinearGradient colors={['#F4F4F4', "#F4F4F4", '#FF9D0100']} style={styles.linearGradient}>
-      <View style={styles.main_block}>
-        <Wrapper>
-          <Search navigation = {props.navigation}/>
-          <AnimalsList navigation={props.navigation} animals={AnimalsArr.animals}/>
+    <MainLayout navigation={navigation}>
 
-        </Wrapper>
-        <Navbar/>
-      </View>
-      </LinearGradient>
-
-
-    </View>
+      {
+        Navigation.currentScreen === 'Home'?<>
+              <Search navigation = {navigation}/>
+              <AnimalsList navigation={navigation} animals={AnimalsArr.animals}/>
+            </>
+            :
+            <View></View>
+      }
+      {
+        Navigation.currentScreen === 'Info'?
+            <View></View>:
+            <View></View>
+      }
+    </MainLayout>
 
 
   );

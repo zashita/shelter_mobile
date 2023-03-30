@@ -62,7 +62,8 @@ const Filters = (props: IFiltersProps) => {
                             </Button>
                             <Button
                                 buttonColor={'#FFf'}
-                                mode = {'contained'}>
+                                mode = {'contained'}
+                                onPress={() =>{}}>
                                 Женский
                             </Button>
                         </View>

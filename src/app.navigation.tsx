@@ -7,6 +7,7 @@ import AnimalDescription from "./screens/Animal.description";
 import Filters from "./screens/Filters";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import Info from "./screens/Info";
+import NewsDescription from "./screens/News.description";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator()
@@ -20,6 +21,7 @@ function AppNavigation() {
                 <Stack.Screen name={"AnimalsDescription"} component ={AnimalDescription}/>
                 <Stack.Screen name={'Filters'} component={Filters}/>
                 <Stack.Screen name={'Info'} component={Info}/>
+                <Stack.Screen name={'NewsDescription'} component={NewsDescription}/>
             </Stack.Navigator>
         </NavigationContainer>
     );

@@ -22,7 +22,7 @@ const Info: React.FC<InfoProps> = observer(({navigation}) => {
                 loading? <ActivityIndicator
                         size={'large'}
                         color = {'#FF9D01'}/>
-                    :<NewsList/>
+                    :<NewsList navigation={navigation}/>
             }
         </>
     );

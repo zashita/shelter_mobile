@@ -7,14 +7,20 @@ import {ScrollView} from "react-native";
 import {INewsItem} from "../../types/NewsItem";
 
 
-const OpenNewsItem = (newsItem: INewsItem) =>{
-    News.setCurrentNewsItem(newsItem);
+export interface NewsListProps{
+    navigation: any
 }
-const NewsList = () => {
+const NewsList:React.FC<NewsListProps> = ({navigation}) => {
+    const OpenNewsItem = (newsItem: INewsItem) =>{
+        News.setCurrentNewsItem(newsItem);
+        navigation.navigate("NewsDescription");
+
+    }
     const NewsViewList = [...News.news].map((newsItem)=>{
 
         return(
             <Card
+                key={newsItem.id}
                 style= {style.card}
                 contentStyle={style.content}
                 onPress={() => OpenNewsItem(newsItem)}>

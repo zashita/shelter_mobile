@@ -23,7 +23,7 @@ const AnimalsList = (props: IAnimalListProps) => {
   }
   const AnimalsViewList = [...props.animals].map(animal => {
     return (
-      <View style={styles.card}>
+      <View style={styles.card} key = {animal.id}>
         <View onTouchEnd={() => CardOpen(animal)}>
         <Image
           style={styles.animal_img}

@@ -8,6 +8,9 @@ import {ActivityIndicator} from "react-native-paper";
 import AnimalsList from "../components/AnimalsList";
 import AnimalsArr from "../store/Animals";
 import Navbar from "../components/Navbar";
+import Navigation from '../store/Navigation';
+import GiftWhiteSVG from '../assets/img/GiftWhite.svg';
+import LikeWhiteSVG from '../assets/img/LikeWhite.svg'
 
 export interface MainLayoutProps{
     navigation: any;
@@ -19,14 +22,49 @@ const MainLayout:React.FC<MainLayoutProps> = ({navigation, children}) => {
         <View style={styles.background}>
             <View style={styles.location_block}>
                 <View style={styles.location_image}>
-                    <LocationSVG/>
+                    {
+                        Navigation.currentScreen === 'Home'
+                        || Navigation.currentScreen === 'Info'?
+                            <LocationSVG/>:
+                            <View></View>
+                    }
+                    {
+                        Navigation.currentScreen === 'Gift'?
+                            <GiftWhiteSVG/>:
+                            <View></View>
+                    }
+                    {
+                        Navigation.currentScreen === 'Like'?
+                            <LikeWhiteSVG/>:
+                            <View></View>
+                    }
                 </View>
-                <Text style= {{color: '#000'}}>Минск, </Text>
-                <Text>Беларусь</Text>
+                {
+                    Navigation.currentScreen === 'Home'
+                    || Navigation.currentScreen === 'Info'?
+                        <>
+                            <Text style= {{color: '#000'}}>Минск, </Text>
+                            <Text>Беларусь</Text>
+                        </>:
+                        <View></View>
+                }
+                {
+                    Navigation.currentScreen === 'Gift'?
+                        <Text>Пожертвования</Text>:
+                        <View></View>
+                }
+                {
+                    Navigation.currentScreen === 'Like'?
+                        <Text>Понравились</Text>:
+                        <View></View>
+                }
+
+
             </View>
             <LinearGradient colors={['#F4F4F4', "#F4F4F4", '#FF9D0100']} style={styles.linearGradient}>
                 <View style={styles.main_block}>
                     <Wrapper>
+                        <Search navigation = {navigation}/>
                         {children}
                     </Wrapper>
                     <Navbar navigation={navigation}/>

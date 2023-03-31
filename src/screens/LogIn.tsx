@@ -10,7 +10,7 @@ export interface ILogInProps{
 const LogIn = (props: ILogInProps) => {
 
   const login = () =>{
-    props.navigation.navigate("Animals")
+    props.navigation.navigate("Main")
 
   }
     return (

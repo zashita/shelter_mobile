@@ -2,7 +2,7 @@ import React from "react";
 import {Image, SafeAreaView, Text, View} from "react-native";
 import {Button} from "react-native-paper";
 import style from '../styles/animals.description.scss'
-import currentanimal from '../store/CurrentAnimal';
+import animals from '../store/Animals';
 import ShareSVG from  '../assets/img/shareIcon.svg'
 import LikeSVG from '../assets/img/share-1-svgrepo-com.svg'
 import {YaMap, Marker, Circle} from 'react-native-yamap';
@@ -39,24 +39,24 @@ const AnimalDescription = () => {
 
     </View>
       <View style={style.bottom_container}>
-        <Text style={style.name_text}>{currentanimal.currentAnimal.name}, {currentanimal.currentAnimal.age}</Text>
+        <Text style={style.name_text}>{animals.currentAnimal.name}, {animals.currentAnimal.age}</Text>
         <View
           style={style.other_info_container}>
             <View style={{display: 'flex', flexDirection: 'row', columnGap: 10}}>
               {
-                currentanimal.currentAnimal.castrated?
+                animals.currentAnimal.castrated?
                     <Text style={style.other_info_text}>Кастрирован</Text>
                     :<Text></Text>
               }
               {
-                currentanimal.currentAnimal.vaccinated?
+                animals.currentAnimal.vaccinated?
                     <Text style={style.other_info_text}>Вакцинорован</Text>
                     :<Text></Text>
               }
             </View>
 
           {
-            currentanimal.currentAnimal.sterilized?
+            animals.currentAnimal.sterilized?
                 <Text style={style.other_info_text}>Стерилизован</Text>
                 :<Text></Text>
           }
@@ -66,7 +66,7 @@ const AnimalDescription = () => {
             Пол
           </Text>
           {
-            currentanimal.currentAnimal.sex === 'female'?
+            animals.currentAnimal.sex === 'female'?
                 <Text style={style.main_info_text}>Девочка</Text>:
                 <Text style = {style.main_info_text}>Мальчик</Text>
           }
@@ -78,7 +78,7 @@ const AnimalDescription = () => {
           </Text>
           <Text style={style.main_info_text}>
             {
-              showAnimalType(currentanimal.currentAnimal.type)
+              showAnimalType(animals.currentAnimal.type)
             }
           </Text>
         </View>
@@ -89,7 +89,7 @@ const AnimalDescription = () => {
           </Text>
           <Text style={style.main_info_text}>
           {
-            currentanimal.currentAnimal.shelter
+            animals.currentAnimal.shelter
           }
         </Text>
         </View>

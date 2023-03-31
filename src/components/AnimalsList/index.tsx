@@ -3,7 +3,7 @@ import { Alert, Image, ScrollView, Text, View } from "react-native";
 import styles from './style.scss';
 import LocationSVG from '../../assets/img/location.svg';
 import LikeSVG from '../../assets/img/Like.svg';
-import currentanimal from '../../store/CurrentAnimal'
+import animals from '../../store/Animals'
 import {IAnimal} from "../../types/Animal";
 
 export interface IAnimalListProps {
@@ -11,49 +11,11 @@ export interface IAnimalListProps {
   navigation: any;
 }
 
-export const animals_example = [
-  {
-    id: 'vjadvh7vgsdifv',
-    age: 3,
-    name: 'Даун',
-    sex: 'female',
-    type: 'cat',
 
-    description: 'string string string string string string string string stringstring ',
-    castrated: false,
-    sterilized: false,
-    vaccinated: true
-  },
-  {
-    id: 'vjadvh7vgsdifv',
-    age: 1,
-    name: 'Собака',
-    sex: 'male',
-    type: 'dog',
-
-    description: 'string string string string string string string string stringstring ',
-    castrated: false,
-    sterilized: true,
-    vaccinated: false
-  },
-  {
-    id: 'vjadvh7vgsdifv',
-    age: 7,
-    name: 'Красава',
-    sex: 'female',
-    type: 'cat',
-
-    description: 'string string string string string string string string stringstring ',
-    castrated: true,
-    sterilized: false,
-    vaccinated: true
-  }
-    ]
-;
 
 const AnimalsList = (props: IAnimalListProps) => {
   const CardOpen = (current: IAnimal) =>{
-    currentanimal.setCurrentAnimal(current);
+    animals.setCurrentAnimal(current);
     props.navigation.navigate("AnimalsDescription")
   }
   const Liked = () =>{

@@ -1,5 +1,5 @@
 import React from "react";
-import Animals from './screens/Animals';
+import Main from './screens/Main';
 import Login from './screens/LogIn';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -15,7 +15,7 @@ function AppNavigation() {
     return (
         <NavigationContainer>
             <Stack.Navigator screenOptions = {{headerShown: false}} initialRouteName={"Login"} >
-                <Stack.Screen name={"Animals"} component={Animals}/>
+                <Stack.Screen name={"Main"} component={Main}/>
                 <Stack.Screen name={"Login"} component={Login}/>
                 <Stack.Screen name={"AnimalsDescription"} component ={AnimalDescription}/>
                 <Stack.Screen name={'Filters'} component={Filters}/>

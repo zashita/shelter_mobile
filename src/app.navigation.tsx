@@ -6,8 +6,9 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import AnimalDescription from "./screens/Animal.description";
 import Filters from "./screens/Filters";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
-import Info from "./screens/Info";
+import News from "./screens/News";
 import NewsDescription from "./screens/News.description";
+import Gifts from "./screens/Gifts";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator()
@@ -15,13 +16,14 @@ const Stack = createNativeStackNavigator()
 function AppNavigation() {
     return (
         <NavigationContainer>
-            <Stack.Navigator screenOptions = {{headerShown: false}} initialRouteName={"Login"} >
-                <Stack.Screen name={"Main"} component={Main}/>
+            <Stack.Navigator screenOptions = {{headerShown: false}} initialRouteName={"Login"}>
+                <Stack.Screen name={"Main"} component={Main} options={{animation: 'none'}}/>
                 <Stack.Screen name={"Login"} component={Login}/>
                 <Stack.Screen name={"AnimalsDescription"} component ={AnimalDescription}/>
                 <Stack.Screen name={'Filters'} component={Filters}/>
-                <Stack.Screen name={'Info'} component={Info}/>
                 <Stack.Screen name={'NewsDescription'} component={NewsDescription}/>
+                <Stack.Screen name={'News'} component={News} options={{animation: 'none'}}/>
+                <Stack.Screen name={'Gifts'} component={Gifts} options={{animation: 'none'}}/>
             </Stack.Navigator>
         </NavigationContainer>
     );

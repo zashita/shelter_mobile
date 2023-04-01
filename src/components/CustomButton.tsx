@@ -16,8 +16,6 @@ const CustomButton:React.FC<IButtonProps> = props => {
         <Pressable style={style} onPress={onPress}>
             <Text style = {text_style}>{title}</Text>
         </Pressable>
-
-
     );
 };
 

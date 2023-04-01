@@ -21,13 +21,16 @@ const Navbar:React.FC<NavbarProps> = observer(({navigation}) => {
 
     const goHome = () =>{
         Navigation.setCurrentScreen('Home')
+        navigation.navigate('Main');
     }
 
     const goInfo = () =>{
         Navigation.setCurrentScreen('Info')
+        navigation.navigate('News')
     }
     const goGifts = () =>{
         Navigation.setCurrentScreen('Gift')
+        navigation.navigate('Gifts')
     }
 
     const goLiked = () =>{

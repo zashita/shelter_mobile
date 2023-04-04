@@ -4,7 +4,6 @@ import LocationSVG from "../assets/img/locationblack.svg";
 import LinearGradient from "react-native-linear-gradient";
 import Wrapper from "../components/Wrapper";
 import Search from "../components/SearchBlock";
-import AnimalsList, {animals_example} from "../components/AnimalsList";
 import Navbar from "../components/Navbar";
 import FilterSVG from '../assets/img/FiltrIconWhite.svg'
 import {Button, ProgressBar, ToggleButton} from "react-native-paper";
@@ -18,7 +17,7 @@ export interface IFiltersProps{
 }
 
 const Filters = (props: IFiltersProps) => {
-    const [status, setStatus]: any = React.useState('checked');
+    const [status, setStatus]: any = React.useState('unchecked');
 
     const onButtonToggle = () => {
         setStatus(status === 'checked' ? 'unchecked' : 'checked');
@@ -31,21 +30,29 @@ const Filters = (props: IFiltersProps) => {
                 </View>
                 <Text style= {{color: '#fff'}}>Фильтры, </Text>
             </View>
-            <LinearGradient colors={['#F4F4F4', "#F4F4F4", '#FF9D0100']} style={styles.linearGradient}>
-                <View style={styles.main_block}>
+            <LinearGradient
+                colors={['#F4F4F4', "#F4F4F4", '#FF9D0100']}
+                style={styles.linearGradient}>
+                <View
+                  style={styles.main_block}>
                     <Wrapper>
                         <Text style={{color: 'gray', marginBottom: 10}}>Я хочу приютить</Text>
                         <View style={{display: 'flex', flexDirection: 'row', columnGap: 20, marginBottom: 40}}>
-                            <Button buttonColor={'#FFF'} mode = {'contained'}>
+                            <Button
+                              buttonColor={'#FFF'}
+                              textColor={'#000'}
+                              mode = {'contained'}>
                                 Собаки
                             </Button>
                             <Button
                                 buttonColor={'#FFf'}
+                                textColor={'#000'}
                                 mode = {'contained'}>
                                 Коты
                             </Button>
                             <Button
                                 buttonColor={'#FFf'}
+                                textColor={'#000'}
                                 mode = {'contained'}>
                                 Другие
                             </Button>
@@ -57,13 +64,16 @@ const Filters = (props: IFiltersProps) => {
                                 columnGap: 20, marginBottom: 40}}>
                             <Button
                                 buttonColor={'#FFF'}
-                                mode = {'contained'}>
+                                mode = {'contained'}
+                                textColor={'#000'}>
                                 Мужской
                             </Button>
                             <Button
                                 mode={'contained'}
-                                buttonColor={'#FFf'}
-                                onPress={()=>{}}>
+                                buttonColor={status === 'checked'?'orange': '#fff'}
+                                textColor={'#000'}
+                                onPress={onButtonToggle}>
+
 
                                 Женский
                             </Button>
@@ -76,8 +86,12 @@ const Filters = (props: IFiltersProps) => {
                         <View
                             style={{display: 'flex', flexDirection: 'row',
                                 columnGap: 20, marginBottom: 40}}>
-                            <TextInput maxLength={1} style={style.age_input}/>
-                            <TextInput maxLength={2} style={style.age_input}/>
+                            <TextInput
+                              maxLength={1}
+                              style={style.age_input}/>
+                            <TextInput
+                              maxLength={2}
+                              style={style.age_input}/>
 
                         </View>
                         <View style = {{marginBottom: 40}}>
@@ -86,7 +100,8 @@ const Filters = (props: IFiltersProps) => {
                                 color={'gray'} />
                         </View>
 
-                        <Text style={{color: 'gray', marginBottom: 10}}>Возраст</Text>
+                        <Text style={{color: 'gray',
+                            marginBottom: 10}}>Возраст</Text>
 
                         <View
                             style={{display: 'flex', flexDirection: 'row',
@@ -94,11 +109,13 @@ const Filters = (props: IFiltersProps) => {
                             <Button
                                 buttonColor={'#FFF'}
                                 mode = {'contained'}
+                                textColor={'#000'}
                                 >
                                 Кастрирован
                             </Button>
                             <Button
                                 buttonColor={'#FFf'}
+                                textColor={'#000'}
                                 mode = {'contained'}>
                                 Стерилизован
                             </Button>
@@ -107,7 +124,8 @@ const Filters = (props: IFiltersProps) => {
                         <Button
                             buttonColor={'#FFf'}
                             mode = {'contained'}
-                            style={{width: '60%'}}>
+                            style={{width: '60%'}}
+                            textColor={'#000'}>
                             Есть прививка
                         </Button>
 
@@ -118,6 +136,7 @@ const Filters = (props: IFiltersProps) => {
                         <Button
                             buttonColor={'#D9D9D9'}
                             mode ={"contained"}
+                            textColor={'#000'}
                             style={{width: "40%"}}>
                             Применить
                         </Button>

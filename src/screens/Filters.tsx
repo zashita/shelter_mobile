@@ -37,24 +37,38 @@ const Filters = (props: IFiltersProps) => {
                   style={styles.main_block}>
                     <Wrapper>
                         <Text style={{color: 'gray', marginBottom: 10}}>Я хочу приютить</Text>
-                        <View style={{display: 'flex', flexDirection: 'row', columnGap: 20, marginBottom: 40}}>
+                        <View style={{display: 'flex', flexDirection: 'row', columnGap: 20, marginBottom: 20}}>
                             <Button
                               buttonColor={'#FFF'}
                               textColor={'#000'}
                               mode = {'contained'}>
-                                Собаки
+                                Собаку
                             </Button>
                             <Button
                                 buttonColor={'#FFf'}
                                 textColor={'#000'}
                                 mode = {'contained'}>
-                                Коты
+                                Кота
                             </Button>
                             <Button
                                 buttonColor={'#FFf'}
                                 textColor={'#000'}
                                 mode = {'contained'}>
-                                Другие
+                                Грызуна
+                            </Button>
+                        </View>
+                        <View style={{display: 'flex', flexDirection: 'row', columnGap: 20, marginBottom: 40}}>
+                            <Button
+                                buttonColor={'#FFF'}
+                                textColor={'#000'}
+                                mode = {'contained'}>
+                                Птицу
+                            </Button>
+                            <Button
+                                buttonColor={'#FFf'}
+                                textColor={'#000'}
+                                mode = {'contained'}>
+                                Рыбку
                             </Button>
                         </View>
 

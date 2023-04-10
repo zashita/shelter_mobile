@@ -61,7 +61,6 @@ const MainLayout:React.FC<MainLayoutProps> = ({navigation, children}) => {
 
 
             </View>
-            <LinearGradient colors={['#F4F4F4', "#F4F4F4", '#FF9D0100']} style={styles.linearGradient}>
                 <View style={styles.main_block}>
                     <Wrapper>
                         <Search navigation = {navigation}/>
@@ -69,9 +68,6 @@ const MainLayout:React.FC<MainLayoutProps> = ({navigation, children}) => {
                     </Wrapper>
                     <Navbar navigation={navigation}/>
                 </View>
-            </LinearGradient>
-
-
         </View>
     );
 };
@@ -100,9 +96,8 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
     main_block: {
-        height: 764,
-        // backgroundColor: `#F4F4F4`,
-        backgroundColor: 'transparent',
+        height: '88.8%',
+        backgroundColor: `#F4F4F4`,
         borderRadius: 40,
     },
 

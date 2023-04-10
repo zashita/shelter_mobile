@@ -44,22 +44,12 @@ const AnimalDescription = () => {
           style={style.other_info_container}>
             <View style={{display: 'flex', flexDirection: 'row', columnGap: 10}}>
               {
-                animals.currentAnimal.castrated?
+                animals.currentAnimal.castrated ?
                     <Text style={style.other_info_text}>Кастрирован</Text>
-                    :<Text></Text>
-              }
-              {
-                animals.currentAnimal.vaccinated?
-                    <Text style={style.other_info_text}>Вакцинорован</Text>
-                    :<Text></Text>
+                    : <Text></Text>
               }
             </View>
 
-          {
-            animals.currentAnimal.sterilized?
-                <Text style={style.other_info_text}>Стерилизован</Text>
-                :<Text></Text>
-          }
         </View>
         <View style = {style.main_info_container}>
           <Text style={style.main_info_text_field}>

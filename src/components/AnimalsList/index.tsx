@@ -51,7 +51,7 @@ const AnimalsList = (props: IAnimalListProps) => {
   });
   return <ScrollView
     style={
-    {height: 636}}>{AnimalsViewList}</ScrollView>;
+    {height: '85%'}}>{AnimalsViewList}</ScrollView>;
 };
 
 export default AnimalsList;

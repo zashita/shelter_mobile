@@ -13,6 +13,8 @@ import style from '../styles/filters.scss'
 import animals from "../store/Animals";
 import url from "../url";
 import server_url from "../url";
+import TypeFilters from "../components/TypeFilters";
+import SexFilters from "../components/SexFilters";
 
 
 export interface IFiltersProps{
@@ -33,69 +35,15 @@ const Filters = (props: IFiltersProps) => {
                 </View>
                 <Text style= {{color: '#fff'}}>Фильтры, </Text>
             </View>
-            <LinearGradient
-                colors={['#F4F4F4', "#F4F4F4", '#FF9D0100']}
-                style={styles.linearGradient}>
                 <View
                   style={styles.main_block}>
                     <Wrapper>
                         <Text style={{color: 'gray', marginBottom: 10}}>Я хочу приютить</Text>
-                        <View style={{display: 'flex', flexDirection: 'row', columnGap: 20, marginBottom: 20}}>
-                            <Button
-                              buttonColor={'#FFF'}
-                              textColor={'#000'}
-                              mode = {'contained'}>
-                                Собаку
-                            </Button>
-                            <Button
-                                buttonColor={'#FFf'}
-                                textColor={'#000'}
-                                mode = {'contained'}>
-                                Кота
-                            </Button>
-                            <Button
-                                buttonColor={'#FFf'}
-                                textColor={'#000'}
-                                mode = {'contained'}>
-                                Грызуна
-                            </Button>
-                        </View>
-                        <View style={{display: 'flex', flexDirection: 'row', columnGap: 20, marginBottom: 40}}>
-                            <Button
-                                buttonColor={'#FFF'}
-                                textColor={'#000'}
-                                mode = {'contained'}>
-                                Птицу
-                            </Button>
-                            <Button
-                                buttonColor={'#FFf'}
-                                textColor={'#000'}
-                                mode = {'contained'}>
-                                Рыбку
-                            </Button>
-                        </View>
+                           <TypeFilters/>
 
                         <Text style={{color: 'gray', marginBottom: 10}}>Пол</Text>
-                        <View
-                            style={{display: 'flex', flexDirection: 'row',
-                                columnGap: 20, marginBottom: 40}}>
-                            <Button
-                                buttonColor={'#FFF'}
-                                mode = {'contained'}
-                                textColor={'#000'}>
-                                Мужской
-                            </Button>
-                            <Button
-                                mode={'contained'}
-                                buttonColor={status === 'checked'?'orange': '#fff'}
-                                textColor={'#000'}
-                                onPress={onButtonToggle}>
+                       <SexFilters/>
 
-
-                                Женский
-                            </Button>
-
-                        </View>
                         <Text
                             style={{color: 'gray', marginBottom: 10}}>
                             Возраст
@@ -167,7 +115,6 @@ const Filters = (props: IFiltersProps) => {
 
 
                 </View>
-            </LinearGradient>
 
 
         </View>
@@ -201,8 +148,7 @@ const styles = StyleSheet.create({
     },
     main_block: {
         height: 764,
-        // backgroundColor: `#F4F4F4`,
-        backgroundColor: 'transparent',
+        backgroundColor: `#F4F4F4`,
         borderRadius: 40,
     },
 

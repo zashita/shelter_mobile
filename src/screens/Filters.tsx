@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, TextInput, View} from "react-native";
+import {Alert, StyleSheet, TextInput, View} from "react-native";
 import LocationSVG from "../assets/img/locationblack.svg";
 import LinearGradient from "react-native-linear-gradient";
 import Wrapper from "../components/Wrapper";
@@ -10,6 +10,9 @@ import {Button, ProgressBar, ToggleButton} from "react-native-paper";
 import {Text} from 'react-native-paper'
 import {TextField} from "@mui/material";
 import style from '../styles/filters.scss'
+import animals from "../store/Animals";
+import url from "../url";
+import server_url from "../url";
 
 
 export interface IFiltersProps{
@@ -151,7 +154,13 @@ const Filters = (props: IFiltersProps) => {
                             buttonColor={'#D9D9D9'}
                             mode ={"contained"}
                             textColor={'#000'}
-                            style={{width: "40%"}}>
+                            style={{width: "40%"}}
+                            onPress={() =>{
+                                const newUrl = new URL(server_url)
+                                newUrl.searchParams.append('type', 'cat')
+                                animals.setUrl(newUrl);
+                                props.navigation.navigate("Main")
+                            }}>
                             Применить
                         </Button>
                     </View>

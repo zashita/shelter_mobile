@@ -42,6 +42,7 @@ import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import {NavigationContainer} from "@react-navigation/native";
 import AnimalsArr from "../store/Animals";
 import AnimalsList from "../components/AnimalsList";
+import url from "../url";
 
 export interface IAnimalsProps{
   navigation: any;
@@ -54,7 +55,8 @@ const Main:React.FC<IAnimalsProps> = observer(({navigation}) => {
   useEffect(()=>{
       animals.setAnimals().
           then(promise => setLoading(false))
-  }, [])
+    console.log(animals.url)
+  }, [animals.url])
 
   return (
 

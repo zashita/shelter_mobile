@@ -15,6 +15,7 @@ import url from "../url";
 import server_url from "../url";
 import TypeFilters from "../components/TypeFilters";
 import SexFilters from "../components/SexFilters";
+import filters from "../store/Filtration"
 
 
 export interface IFiltersProps{
@@ -23,6 +24,24 @@ export interface IFiltersProps{
 
 const Filters = (props: IFiltersProps) => {
     const [status, setStatus]: any = React.useState('unchecked');
+
+    const setOptions = () =>{
+        const newUrl = new URL(server_url)
+        if(filters.dog){
+            newUrl.searchParams.append('type', 'dog')
+        }
+        if(filters.cat){
+            newUrl.searchParams.append('type', 'cat')
+        }
+        if(filters.male){
+            newUrl.searchParams.append('sex', 'male')
+        }
+        if(filters.female){
+            newUrl.searchParams.append('sex', 'female')
+        }
+        animals.setUrl(newUrl);
+        props.navigation.navigate("Main")
+    }
 
     const onButtonToggle = () => {
         setStatus(status === 'checked' ? 'unchecked' : 'checked');
@@ -103,12 +122,7 @@ const Filters = (props: IFiltersProps) => {
                             mode ={"contained"}
                             textColor={'#000'}
                             style={{width: "40%"}}
-                            onPress={() =>{
-                                const newUrl = new URL(server_url)
-                                newUrl.searchParams.append('type', 'cat')
-                                animals.setUrl(newUrl);
-                                props.navigation.navigate("Main")
-                            }}>
+                            onPress={setOptions}>
                             Применить
                         </Button>
                     </View>

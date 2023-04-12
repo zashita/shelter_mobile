@@ -16,6 +16,7 @@ import server_url from "../url";
 import TypeFilters from "../components/TypeFilters";
 import SexFilters from "../components/SexFilters";
 import filters from "../store/Filtration"
+import OtherFilters from "../components/OtherFilters";
 
 
 export interface IFiltersProps{
@@ -87,31 +88,7 @@ const Filters = (props: IFiltersProps) => {
                         <Text style={{color: 'gray',
                             marginBottom: 10}}>Возраст</Text>
 
-                        <View
-                            style={{display: 'flex', flexDirection: 'row',
-                                columnGap: 20, marginBottom: 20}}>
-                            <Button
-                                buttonColor={'#FFF'}
-                                mode = {'contained'}
-                                textColor={'#000'}
-                                >
-                                Кастрирован
-                            </Button>
-                            <Button
-                                buttonColor={'#FFf'}
-                                textColor={'#000'}
-                                mode = {'contained'}>
-                                Стерилизован
-                            </Button>
-
-                        </View>
-                        <Button
-                            buttonColor={'#FFf'}
-                            mode = {'contained'}
-                            style={{width: '60%'}}
-                            textColor={'#000'}>
-                            Есть прививка
-                        </Button>
+                        <OtherFilters/>
 
 
                     </Wrapper>

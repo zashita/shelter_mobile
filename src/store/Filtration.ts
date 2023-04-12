@@ -14,6 +14,13 @@ class Filters{
 
   female: boolean = false
 
+  castrated: boolean = false;
+
+  sterialized: boolean = false
+
+  vaccinated: boolean = false;
+
+
 
 
   constructor() {
@@ -40,6 +47,16 @@ class Filters{
   }
   setFemale(newValue: boolean){
     this.female = newValue
+  }
+  setCastrated(newValue: boolean){
+    this.castrated = newValue
+  }
+  setSterialized(newValue: boolean){
+    this.sterialized = newValue
+  }
+
+  setVaccinated(newValue: boolean){
+    this.vaccinated = newValue
   }
 
 }

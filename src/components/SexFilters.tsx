@@ -10,11 +10,14 @@ const SexFilters = observer(() => {
   const maleToggle = () =>{
     filters.setMale(filters.male === true? false: true)
     filters.setFemale(filters.female === true? false: false)
+    filters.setSterialized(filters.sterialized === true? false: false)
+
   }
 
   const femaleToggle = () =>{
     filters.setFemale(filters.female === true? false: true)
     filters.setMale(filters.male === true? false: false)
+    filters.setCastrated(filters.castrated === true? false: false)
   }
   return (
     <View

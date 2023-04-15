@@ -17,6 +17,7 @@ import TypeFilters from "../components/TypeFilters";
 import SexFilters from "../components/SexFilters";
 import filters from "../store/Filtration"
 import OtherFilters from "../components/OtherFilters";
+import AgeFilters from "../components/AgeFilters";
 
 
 export interface IFiltersProps{
@@ -68,22 +69,7 @@ const Filters = (props: IFiltersProps) => {
                             style={{color: 'gray', marginBottom: 10}}>
                             Возраст
                         </Text>
-                        <View
-                            style={{display: 'flex', flexDirection: 'row',
-                                columnGap: 20, marginBottom: 40}}>
-                            <TextInput
-                              maxLength={1}
-                              style={style.age_input}/>
-                            <TextInput
-                              maxLength={2}
-                              style={style.age_input}/>
-
-                        </View>
-                        <View style = {{marginBottom: 40}}>
-                            <ProgressBar
-                                progress={0.5}
-                                color={'gray'} />
-                        </View>
+                        <AgeFilters/>
 
                         <Text style={{color: 'gray',
                             marginBottom: 10}}>Возраст</Text>

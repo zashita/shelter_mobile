@@ -18,6 +18,7 @@ import SexFilters from "../components/SexFilters";
 import filters from "../store/Filtration"
 import OtherFilters from "../components/OtherFilters";
 import AgeFilters from "../components/AgeFilters";
+import {GestureHandlerRootView} from "react-native-gesture-handler";
 
 
 export interface IFiltersProps{
@@ -42,6 +43,7 @@ const Filters = (props: IFiltersProps) => {
             newUrl.searchParams.append('sex', 'female')
         }
         animals.setUrl(newUrl);
+        Alert.alert(String(filters.ageMin))
         props.navigation.navigate("Main")
     }
 
@@ -49,6 +51,7 @@ const Filters = (props: IFiltersProps) => {
         setStatus(status === 'checked' ? 'unchecked' : 'checked');
     };
     return (
+
         <View style={styles.background}>
             <View style={styles.location_block}>
                 <View style={styles.location_image}>
@@ -71,10 +74,10 @@ const Filters = (props: IFiltersProps) => {
                         </Text>
                         <AgeFilters/>
 
-                        <Text style={{color: 'gray',
-                            marginBottom: 10}}>Возраст</Text>
+                        {/*<Text style={{color: 'gray',*/}
+                        {/*    marginBottom: 10}}>Возраст</Text>*/}
 
-                        <OtherFilters/>
+                        {/*<OtherFilters/>*/}
 
 
                     </Wrapper>

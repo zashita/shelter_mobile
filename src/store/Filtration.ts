@@ -20,6 +20,9 @@ class Filters{
 
   vaccinated: boolean = false;
 
+  ageMin:number = 0;
+  ageMax: number = 20;
+
 
 
 
@@ -57,6 +60,13 @@ class Filters{
 
   setVaccinated(newValue: boolean){
     this.vaccinated = newValue
+  }
+
+  setMinAge (newValue: number){
+    this.ageMin = newValue
+}
+  setMaxAge (newValue: number){
+    this.ageMax = newValue
   }
 
 }

@@ -1,10 +1,17 @@
 import React from "react";
-import { TextInput, View } from "react-native";
+import {Alert, TextInput, View} from "react-native";
 import style from "../styles/filters.scss";
 import { ProgressBar } from "react-native-paper";
 import RangeSlider from "./RangeSlider";
+import filters from '../store/Filtration'
+
 
 const AgeFilters = () => {
+
+    const onChange = (range: any) => {
+        filters.setMinAge(range.min)
+        filters.setMaxAge(range.max)
+    }
   return (
     <>
       <View
@@ -19,7 +26,7 @@ const AgeFilters = () => {
 
       </View>
       <View style = {{marginBottom: 40, flex: 1, flexDirection: 'row'}}>
-        <RangeSlider min={0} max={20} onChange={() =>{}} title={'age'} steps={1}/>
+        <RangeSlider min={0} max={20} onChange={(range : any) => onChange(range)} title={'age'} steps={1}/>
       </View>
     </>
 

@@ -4,6 +4,7 @@ import Animated, {runOnJS, useAnimatedGestureHandler, useAnimatedStyle, useShare
 import {GestureHandlerRootView, PanGestureHandler, PanGestureHandlerGestureEvent} from "react-native-gesture-handler";
 import KnobSVG from  "../assets/img/knob.svg"
 import filters from "../store/Filtration";
+import {observer} from "mobx-react-lite";
 
 
 export interface RangeSliderProps {
@@ -15,16 +16,16 @@ export interface RangeSliderProps {
 }
 
 const WIDTH = Dimensions.get('window').width - 60;
-const TRACK_WIDTH = Dimensions.get('window').width - 100;
+const TRACK_WIDTH = Dimensions.get('window').width - 60;
 const KNOB_SIZE = 25;
 const MAX_WIDTH = TRACK_WIDTH - KNOB_SIZE/2 + 6
 
 
 
-const RangeSlider:React.FC<RangeSliderProps> = ({min, max, onChange, steps, title}) => {
+const RangeSlider:React.FC<RangeSliderProps> = observer(({min, max, onChange, steps, title}) => {
 
-    const xKnob1 = useSharedValue(0)
-    const xKnob2 = useSharedValue(MAX_WIDTH)
+    const xKnob1 = useSharedValue(((filters.ageMin - min)/(max - min)) * MAX_WIDTH)
+    const xKnob2 = useSharedValue(((filters.ageMax - min)/(max - min)) * MAX_WIDTH)
 
     const gestureHandler1 = useAnimatedGestureHandler({
         onStart:(event, context) => {
@@ -103,10 +104,6 @@ const RangeSlider:React.FC<RangeSliderProps> = ({min, max, onChange, steps, titl
     return (
 
         <View style={style.rangeContainer}>
-            <View style={style.labelsContainer}>
-                <Text style = {style.label}>{min}</Text>
-                <Text style = {style.label}>{max}</Text>
-            </View>
             <View style = {style.track}/>
             <Animated.View style={styleLine}/>
             <View>
@@ -123,14 +120,12 @@ const RangeSlider:React.FC<RangeSliderProps> = ({min, max, onChange, steps, titl
             </View>
         </View>
     );
-};
+})
 const style = StyleSheet.create({
     rangeContainer:{
-        padding: 20,
+        padding: 0,
         borderColor: '#cccdb2',
-        backgroundColor: '#fff',
         width: WIDTH,
-        height: 80,
         borderRadius: 20
     },
     labelsContainer:{

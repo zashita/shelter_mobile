@@ -1,6 +1,11 @@
 import React, {useState} from 'react';
 import {Dimensions, Image, SafeAreaView, ScrollView, StyleSheet, Text, View} from "react-native";
 
+export interface AnimalSliderProps{
+    sliderActive: boolean;
+    setSliderActive: any;
+}
+
 
 const images = [
     require('../assets/img/examplecard.png'),
@@ -11,7 +16,7 @@ const images = [
 const WIDTH = Dimensions.get('window').width
 const HEIGHT = Dimensions.get('window').height
 
-const AnimalSlider = () => {
+const AnimalSlider:React.FC<AnimalSliderProps> = ({sliderActive, setSliderActive}) => {
     const [ImgActive, setImgActive] = useState(0)
 
     const onChange = (nativeEvent: any) =>{
@@ -23,8 +28,14 @@ const AnimalSlider = () => {
         }
     }
     return (
-        <SafeAreaView style = {styles.container}>
-            <View style={styles.wrap}>
+        <SafeAreaView
+            style = {styles.container}
+            onTouchEnd={() => setSliderActive(false)}
+        >
+            <View
+                style={styles.wrap}
+                onTouchEnd={e => e.stopPropagation()}
+            >
                 <ScrollView
                  onScroll={({nativeEvent})=> onChange(nativeEvent)}
                  showsHorizontalScrollIndicator={false}
@@ -36,7 +47,7 @@ const AnimalSlider = () => {
                         images.map((image, index)=>{
                             return(
                                 <Image
-                                key = {image}
+                                key = {index}
                                 resizeMode={'stretch'}
                                 style={styles.image}
                                 source={image}
@@ -51,7 +62,7 @@ const AnimalSlider = () => {
                         images.map((image, index)=>{
                             return(
                                 <Text
-                                    key = {image}
+                                    key = {index}
                                     style={ImgActive === index? styles.dotActive : styles.dotInactive}
                                 >
                                     ●
@@ -67,7 +78,11 @@ const AnimalSlider = () => {
 
 const styles = StyleSheet.create({
     container:{
-        flex: 1
+        flex: 1,
+        position: "absolute",
+        width: WIDTH,
+        height: HEIGHT,
+
     },
     wrap:{
         width: WIDTH - 20,

@@ -1,6 +1,5 @@
 import React from 'react';
-import {Image, View} from 'react-native';
-import Styles from './style.scss';
+import {Image, StyleSheet, View} from 'react-native';
 import HomeSVG from '../../assets/img/HomeInactive.svg';
 import InfoSVG from '../../assets/img/InfoInactive.svg'
 import GiftSVG from '../../assets/img/GiftInactive.svg'
@@ -40,8 +39,8 @@ const Navbar:React.FC<NavbarProps> = observer(({navigation}) => {
 
 
   return (
-    <View style={Styles.bar}>
-      <View style={Styles.icons_container}>
+    <View style={style.bar}>
+      <View style={style.icons_container}>
           <Button icon={
               Navigation.currentScreen === "Home"?
               HomeActiveSVG: HomeSVG}
@@ -70,3 +69,24 @@ const Navbar:React.FC<NavbarProps> = observer(({navigation}) => {
 });
 
 export default Navbar;
+
+const style = StyleSheet.create({
+    bar: {
+    width: '100%',
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    bottom: 0,
+    position: 'absolute',
+    borderRadius: 10,
+    backgroundColor: '#fff',
+    borderBottomColor: '#EE7100',
+    borderBottomWidth: 3
+},
+icons_container: {
+    display: 'flex',
+    flexDirection: 'row',
+    columnGap: 35,
+    width: '85%',
+}
+})

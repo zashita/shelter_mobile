@@ -1,5 +1,5 @@
-import React from "react";
-import {Image, SafeAreaView, Text, View} from "react-native";
+import React, {useState} from "react";
+import {Image, SafeAreaView, StyleSheet, Text, View} from "react-native";
 import {Button} from "react-native-paper";
 import style from '../styles/animals.description.scss'
 import animals from '../store/Animals';
@@ -21,94 +21,209 @@ const AnimalDescription = () => {
     }
   }
 
+  const [SliderActive, setSliderActive] = useState(false)
+
   return (
-    // <View style={style.global_container}>
-    //   <View style={style.top_divider}>
-    //
-    //   </View>
-    // <View style={style.top_container}>
-    //   <Button icon={ShareSVG} mode="contained" buttonColor={"transparent"} style={style.button}>
-    //
-    //   </Button>
-    //   <Image
-    //     style={style.animal_image}
-    //     source={require('../assets/img/examplecard.png')}
-    //   />
-    //   <Button icon={LikeSVG} mode="contained" buttonColor={"transparent"} style={style.button}>
-    //
-    //   </Button>
-    //
-    // </View>
-    //   <View style={style.bottom_container}>
-    //     <Text style={style.name_text}>{animals.currentAnimal.name}, {animals.currentAnimal.age}</Text>
-    //     <View
-    //       style={style.other_info_container}>
-    //         <View style={{display: 'flex', flexDirection: 'row', columnGap: 10}}>
-    //           {
-    //             animals.currentAnimal.castrated ?
-    //                 <Text style={style.other_info_text}>Кастрирован</Text>
-    //                 : <Text></Text>
-    //           }
-    //         </View>
-    //
-    //     </View>
-    //     <View style = {style.main_info_container}>
-    //       <Text style={style.main_info_text_field}>
-    //         Пол
-    //       </Text>
-    //       {
-    //         animals.currentAnimal.sex === 'female'?
-    //             <Text style={style.main_info_text}>Девочка</Text>:
-    //             <Text style = {style.main_info_text}>Мальчик</Text>
-    //       }
-    //     </View>
-    //
-    //     <View style = {style.main_info_container}>
-    //       <Text style={style.main_info_text_field}>
-    //         Порода
-    //       </Text>
-    //       <Text style={style.main_info_text}>
-    //         {
-    //           showAnimalType(animals.currentAnimal.type)
-    //         }
-    //       </Text>
-    //     </View>
-    //
-    //     <View style = {style.main_info_container}>
-    //       <Text style={style.main_info_text_field}>
-    //         Адрес
-    //       </Text>
-    //       <Text style={style.main_info_text}>
-    //       {
-    //         animals.currentAnimal.shelter
-    //       }
-    //     </Text>
-    //     </View>
-    //     <YaMap
-    //         showUserPosition={false}
-    //         rotateGesturesEnabled={false}
-    //         nightMode={false}
-    //         mapType={'vector'}
-    //         initialRegion={{
-    //           lat: 30,
-    //           lon: 30,
-    //           zoom: 7,
-    //           azimuth: 0,
-    //         }}
-    //       style = {{width: '100%', height: 300, borderRadius: 10, borderWidth: 3, borderStyle: 'solid', borderColor: '#000'}}
-    //     >
-    //       <Marker
-    //           point={{ lat: 30, lon: 30 }}
-    //       />
-    //     </YaMap>
-    //
-    //
-    //
-    //
-    //   </View>
-    // </View>
-      <AnimalSlider/>
+      <>
+    <View style={SliderActive? style.global_container_active: style.global_container}>
+      <View style={style.top_divider}>
+
+      </View>
+    <View style={style.top_container}>
+      <Button icon={ShareSVG} mode="contained" buttonColor={"transparent"} style={style.button}>
+
+      </Button>
+      <View
+        onTouchEnd={() => setSliderActive(true)}>
+      <Image
+        style={style.animal_image}
+        source={require('../assets/img/examplecard.png')}
+      />
+      </View>
+      <Button icon={LikeSVG} mode="contained" buttonColor={"transparent"} style={style.button}>
+
+      </Button>
+
+    </View>
+      <View style={style.bottom_container}>
+        <Text style={style.name_text}>{animals.currentAnimal.name}, {animals.currentAnimal.age}</Text>
+        <View
+          style={style.other_info_container}>
+            <View style={{display: 'flex', flexDirection: 'row', columnGap: 10}}>
+              {
+                animals.currentAnimal.castrated ?
+                    <Text style={style.other_info_text}>Кастрирован</Text>
+                    : <Text></Text>
+              }
+            </View>
+
+        </View>
+        <View style = {style.main_info_container}>
+          <Text style={style.main_info_text_field}>
+            Пол
+          </Text>
+          {
+            animals.currentAnimal.sex === 'female'?
+                <Text style={style.main_info_text}>Девочка</Text>:
+                <Text style = {style.main_info_text}>Мальчик</Text>
+          }
+        </View>
+
+        <View style = {style.main_info_container}>
+          <Text style={style.main_info_text_field}>
+            Порода
+          </Text>
+          <Text style={style.main_info_text}>
+            {
+              showAnimalType(animals.currentAnimal.type)
+            }
+          </Text>
+        </View>
+
+        <View style = {style.main_info_container}>
+          <Text style={style.main_info_text_field}>
+            Адрес
+          </Text>
+          <Text style={style.main_info_text}>
+          {
+            animals.currentAnimal.shelter
+          }
+        </Text>
+        </View>
+        <YaMap
+            showUserPosition={false}
+            rotateGesturesEnabled={false}
+            nightMode={false}
+            mapType={'vector'}
+            initialRegion={{
+              lat: 30,
+              lon: 30,
+              zoom: 7,
+              azimuth: 0,
+            }}
+          style = {{width: '100%', height: 300, borderRadius: 10, borderWidth: 3, borderStyle: 'solid', borderColor: '#000'}}
+        >
+          <Marker
+              point={{ lat: 30, lon: 30 }}
+          />
+        </YaMap>
+
+
+
+
+      </View>
+    </View>
+        {
+          SliderActive? <AnimalSlider sliderActive={SliderActive} setSliderActive={setSliderActive}/>:
+              <View/>
+        }
+
+      </>
   );
 };
+// const style = StyleSheet.create({
+//   button:{
+//   height: 30,
+//   width: 30,
+//   justifySelf: 'center',
+// },
+//
+// top_container:{
+//   display: flex,
+//   flex-direction: row,
+//   justify-content: space-between,
+//   background-color: #ffffff,
+//   padding-top: 30px,
+//   padding-left: 10px,
+//
+//
+// }
+//
+// ,animal_image:{
+//   width: 160px,
+//   height: 160px,
+//   border-radius: 228px,
+//   align-self: center,
+//   margin-top: 30px,
+//
+// }
+// ,bottom_container:{
+//   width: 90%,
+//   border-radius: 20px,
+//   margin-top: 0,
+//   height: 600px,
+//   align-self: center,
+//
+// }
+// ,global_container:{
+//   background-color: white,
+//   height: 100%,
+//
+// }
+//
+// ,bottom_container:{
+//   padding: 20,
+// }
+//
+// ,name_text:{
+//   color: '#000',
+//   font-size: 24,
+//   margin-bottom: 20,
+//   align-self: 'center',
+//
+// }
+//
+// ,other_info_container:{
+//   background:' #EDEDED',
+//   border-radius: 8,
+//   width: '100%',
+//   padding: 15,
+//   margin-bottom: 15,
+//
+// }
+//
+// ,other_info_text:{
+//   background: '#FFD5B0',
+//   border-radius: 10,
+//   color: black,
+//   padding: 6 14,
+//   font-size: 14,
+// }
+// ,top_divider:{
+//   width: 251,
+//   height: 9,
+//   align-self: 'center',
+//   margin-top: 15,
+//
+//   background: '#D9D9D9',
+//   border-radius: 10,
+// }
+//
+// ,main_info_text:{
+//   color:' #7C7C7C',
+//   font-size: 16,
+//   margin-bottom: 15,
+// }
+//
+// ,main_info_text_field:{
+//   color: '#000',
+//   font-size: 16,
+//   margin-bottom: 15,
+// }
+//
+// ,main_info_container:{
+//   display: 'flex',
+//   flex-direction: 'row',
+//   justify-content: 'space-between',
+//   align-items: 'center',
+//   width: '60%',
+// }
+//
+// ,additional_info_text:{
+//   color: #000,
+//   font-size: 15px,
+//   margin-bottom: 20px,
+// }
+// })
 
 export default AnimalDescription;

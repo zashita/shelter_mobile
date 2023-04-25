@@ -43,6 +43,7 @@ import {NavigationContainer} from "@react-navigation/native";
 import AnimalsArr from "../store/Animals";
 import AnimalsList from "../components/AnimalsList";
 import url from "../url";
+import search from "../store/Search";
 
 export interface IAnimalsProps{
   navigation: any;
@@ -55,9 +56,10 @@ const Main:React.FC<IAnimalsProps> = observer(({navigation}) => {
   useEffect(()=>{
       animals.setAnimals().
           then(promise => setLoading(false))
-    console.log(animals.url)
   }, [animals.url])
-
+ const filteredAnimals = animals.animals.filter(animal => {
+     return search.searchString !== undefined?animal.name.toLowerCase().includes(search.searchString.toLowerCase()): animal
+ })
   return (
 
     <MainLayout navigation={navigation}>
@@ -66,7 +68,7 @@ const Main:React.FC<IAnimalsProps> = observer(({navigation}) => {
       :
           <AnimalsList
               navigation={navigation}
-              animals={animals.animals}/>
+              animals={filteredAnimals}/>
       }
 
     </MainLayout>

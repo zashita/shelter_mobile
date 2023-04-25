@@ -5,6 +5,7 @@ import LocationSVG from '../../assets/img/location.svg';
 import LikeSVG from '../../assets/img/Like.svg';
 import animals from '../../store/Animals'
 import {IAnimal} from "../../types/Animal";
+import {observer} from "mobx-react-lite";
 
 export interface IAnimalListProps {
   animals: any;
@@ -13,7 +14,7 @@ export interface IAnimalListProps {
 
 
 
-const AnimalsList = (props: IAnimalListProps) => {
+const AnimalsList = observer((props: IAnimalListProps) => {
   const CardOpen = (current: IAnimal) =>{
     animals.setCurrentAnimal(current);
     props.navigation.navigate("AnimalsDescription")
@@ -52,6 +53,6 @@ const AnimalsList = (props: IAnimalListProps) => {
   return <ScrollView
     style={
     {height: '85%'}}>{AnimalsViewList}</ScrollView>;
-};
+})
 
 export default AnimalsList;

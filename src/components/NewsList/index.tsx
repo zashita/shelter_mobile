@@ -5,18 +5,26 @@ import NewsExample from '../../assets/img/NewsExample.png'
 import News from '../../store/News'
 import {ScrollView} from "react-native";
 import {INewsItem} from "../../types/NewsItem";
+import animals from "../../store/Animals";
+import search from "../../store/Search";
+import {observer} from "mobx-react-lite";
 
 
 export interface NewsListProps{
     navigation: any
 }
-const NewsList:React.FC<NewsListProps> = ({navigation}) => {
+const NewsList:React.FC<NewsListProps> = observer(({navigation}) => {
     const OpenNewsItem = (newsItem: INewsItem) =>{
         News.setCurrentNewsItem(newsItem);
         navigation.navigate("NewsDescription");
 
     }
-    const NewsViewList = [...News.news].map((newsItem)=>{
+
+    const filteredNews = News.news.filter(newsItem => {
+        return search.searchString !== undefined?newsItem.text.toLowerCase().includes(search.searchString.toLowerCase()): newsItem
+    })
+
+    const NewsViewList = [...filteredNews].map((newsItem)=>{
 
         return(
             <Card
@@ -39,6 +47,6 @@ const NewsList:React.FC<NewsListProps> = ({navigation}) => {
     style={
     {height: 636}}>{NewsViewList}</ScrollView>
     )
-};
+})
 
 export default NewsList;

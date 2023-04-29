@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Image, StyleSheet, TextInput, View} from 'react-native';
+import {Alert, Image, NativeEventEmitter, StyleSheet, TextInput, View} from 'react-native';
 import styles from './style.scss';
 import FiltrSVG from '../../assets/img/FiltrIcon.svg';
 import SearchSVG from '../../assets/img/icons8-search.svg';
@@ -11,14 +11,12 @@ import search from "../../store/Search";
 export interface ISearchProps{
     navigation: any;
 }
+
+
 const Search = observer((props: ISearchProps) => {
+    const [text, setText] = useState('')
     const openFilters = () =>{
         props.navigation.navigate('Filters')
-    }
-
-
-    const onChange = (e:any) =>{
-        search.setSearchString(e.target.value)
     }
   return (
     <View style={styles.searchBlock}>
@@ -29,7 +27,7 @@ const Search = observer((props: ISearchProps) => {
           style={styles.input}
           placeholder={'Найти'}
           maxLength={25}
-          onChange={e => onChange(e)}
+          onChangeText={e => search.setSearchString(e)}
           value={search.searchString}
       />
         {

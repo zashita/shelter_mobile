@@ -8,7 +8,7 @@ class Search{
         makeAutoObservable(this)
     }
 
-    setSearchString(newString: string)
+    setSearchString(newString: any)
     {
         this.searchString = newString
     }

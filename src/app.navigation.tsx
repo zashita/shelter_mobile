@@ -10,6 +10,7 @@ import News from "./screens/News";
 import NewsDescription from "./screens/News.description";
 import Gifts from "./screens/Gifts";
 import {GestureHandlerRootView} from "react-native-gesture-handler";
+import Liked from "./screens/Liked";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator()
@@ -25,6 +26,7 @@ function AppNavigation() {
                     <Stack.Screen name={'NewsDescription'} component={NewsDescription}/>
                     <Stack.Screen name={'News'} component={News} options={{animation: 'none'}}/>
                     <Stack.Screen name={'Gifts'} component={Gifts} options={{animation: 'none'}}/>
+                    <Stack.Screen name={'Liked'} component={Liked} options={{animation: 'none'}}/>
                 </Stack.Navigator>
             </NavigationContainer>
         </GestureHandlerRootView>

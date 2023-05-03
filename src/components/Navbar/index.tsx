@@ -34,6 +34,7 @@ const Navbar:React.FC<NavbarProps> = observer(({navigation}) => {
 
     const goLiked = () =>{
         Navigation.setCurrentScreen('Like')
+        navigation.navigate('Liked')
     }
 
 

@@ -56,20 +56,24 @@ export interface IAnimalsProps{
 const Liked:React.FC<IAnimalsProps> = observer(({navigation}) => {
     const [loading, setLoading] = useState(true)
     useEffect(()=>{
-        liked.setLikedId(getData().then(promise => setLoading(false)))
-    })
+        liked.setLiked().then(promise=> setLoading(false))
+    },[])
     const filteredAnimals = animals.animals.filter(animal => {
         return search.searchString !== undefined?animal.name.toLowerCase().includes(search.searchString.toLowerCase()): animal
     })
 
-    const getData = async () => {
-        try {
-            const jsonValue = await AsyncStorage.getItem('liked')
-            return jsonValue != null ? JSON.parse(jsonValue) : {id: []};
-        } catch(e) {
-            // error reading value
-        }
-    }
+    const likedAnimals = filteredAnimals.filter(animal => {
+        return liked.likedID.includes(animal.id)
+    })
+
+    // const getData = async () => {
+    //     try {
+    //         const jsonValue = await AsyncStorage.getItem('liked')
+    //         jsonValue != null ? liked.setLiked(JSON.parse(jsonValue)) : liked.setLiked(liked.liked);
+    //     } catch(e) {
+    //         // error reading value
+    //     }
+    // }
     return (
 
         <MainLayout navigation={navigation}>
@@ -78,7 +82,7 @@ const Liked:React.FC<IAnimalsProps> = observer(({navigation}) => {
                 :
                 <AnimalsList
                     navigation={navigation}
-                    animals={filteredAnimals}/>
+                    animals={likedAnimals}/>
             }
 
         </MainLayout>

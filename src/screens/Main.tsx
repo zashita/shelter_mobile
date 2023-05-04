@@ -44,6 +44,7 @@ import AnimalsArr from "../store/Animals";
 import AnimalsList from "../components/AnimalsList";
 import url from "../url";
 import search from "../store/Search";
+import liked from "../store/Liked";
 
 export interface IAnimalsProps{
   navigation: any;
@@ -55,7 +56,8 @@ const Main:React.FC<IAnimalsProps> = observer(({navigation}) => {
   const [loading, setLoading] = useState(true)
   useEffect(()=>{
       animals.setAnimals().
-          then(promise => setLoading(false))
+      then(promise => liked.setLiked().
+      then(promise => setLoading(false)))
   }, [animals.url])
  const filteredAnimals = animals.animals.filter(animal => {
      return search.searchString !== undefined?animal.name.toLowerCase().includes(search.searchString.toLowerCase()): animal

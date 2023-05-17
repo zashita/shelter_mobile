@@ -9,17 +9,16 @@ class Animals{
     url: URL = new URL(server_url);
     animals: IAnimal[] = [];
     currentAnimal: IAnimal = {
-        id: 'vjadvh7vgsdifv',
-        age: 0,
-        name: '',
-        sex: 'female',
-        type: 'other',
-
-        description: '',
-        castrated: false,
-        sterilized: false,
-        vaccinated: false,
-        shelter: ' '
+        ID:"1",
+        Age:3,
+        Name:"Шарик",
+        Sex:1,
+        Type:"CAT",
+        Description:"",
+        Sterilized:true,
+        Vaccinated:false,
+        Shelter:"Super Cat",
+        Photo:""
     };
 
     constructor() {

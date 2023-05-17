@@ -1,2 +1,2 @@
-let server_url = ("https://64202b9225cb65721043b12e.mockapi.io/shelter/animals");
+let server_url = ("http://miomi.by/api/animal/v1/");
 export default server_url;

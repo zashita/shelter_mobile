@@ -43,7 +43,6 @@ const Filters = (props: IFiltersProps) => {
             newUrl.searchParams.append('sex', 'female')
         }
         animals.setUrl(newUrl);
-        Alert.alert(String(filters.ageMin))
         props.navigation.navigate("Main")
     }
 
@@ -74,10 +73,10 @@ const Filters = (props: IFiltersProps) => {
                         </Text>
                         <AgeFilters/>
 
-                        {/*<Text style={{color: 'gray',*/}
-                        {/*    marginBottom: 10}}>Возраст</Text>*/}
+                        <Text style={{color: 'gray',
+                            marginBottom: 10}}>Другие</Text>
 
-                        {/*<OtherFilters/>*/}
+                        <OtherFilters/>
 
 
                     </Wrapper>

@@ -60,7 +60,7 @@ const Main:React.FC<IAnimalsProps> = observer(({navigation}) => {
       then(promise => setLoading(false)))
   }, [animals.url])
  const filteredAnimals = animals.animals.filter(animal => {
-     return search.searchString !== undefined?animal.name.toLowerCase().includes(search.searchString.toLowerCase()): animal
+     return search.searchString !== undefined?animal.Name.toLowerCase().includes(search.searchString.toLowerCase()): animal
  })
   return (
 

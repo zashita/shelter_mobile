@@ -1,17 +1,13 @@
 export interface IAnimal{
-    id: string;
-    age: number;
-    name: string;
-    sex: 'male' | 'female';
-    type: 'dog' | 'cat' | 'other';
-
-    description: string;
-    castrated: boolean;
-    sterilized: boolean;
-    vaccinated: boolean;
-
-    shelter: string
-
-
-
+    ID: string;
+    Age: number;
+    Name:string;
+    Sex: 0 | 1;
+    Type: string;
+    Description: string;
+    Sterilized:boolean;
+    Vaccinated:boolean;
+    Shelter:string;
+    Photo:string;
 }
+

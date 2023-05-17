@@ -14,7 +14,7 @@ YaMap.init(API_KEY);
 const AnimalDescription = () => {
 
   const showAnimalType = (type: string) =>{
-    switch (type){
+    switch (type.toLowerCase()){
       case 'cat': return 'Кот';
       case 'dog': return 'Собака';
       case 'other': return 'Другой';
@@ -46,16 +46,16 @@ const AnimalDescription = () => {
 
     </View>
       <View style={style.bottom_container}>
-        <Text style={style.name_text}>{animals.currentAnimal.name}, {animals.currentAnimal.age}</Text>
+        <Text style={style.name_text}>{animals.currentAnimal.Name}, {animals.currentAnimal.Age}</Text>
         <View
           style={style.other_info_container}>
-            <View style={{display: 'flex', flexDirection: 'row', columnGap: 10}}>
-              {
-                animals.currentAnimal.castrated ?
-                    <Text style={style.other_info_text}>Кастрирован</Text>
-                    : <Text></Text>
-              }
-            </View>
+            {/*<View style={{display: 'flex', flexDirection: 'row', columnGap: 10}}>*/}
+            {/*  {*/}
+            {/*    animals.currentAnimal.castrated ?*/}
+            {/*        <Text style={style.other_info_text}>Кастрирован</Text>*/}
+            {/*        : <Text></Text>*/}
+            {/*  }*/}
+            {/*</View>*/}
 
         </View>
         <View style = {style.main_info_container}>
@@ -63,7 +63,7 @@ const AnimalDescription = () => {
             Пол
           </Text>
           {
-            animals.currentAnimal.sex === 'female'?
+            animals.currentAnimal.Sex === 1?
                 <Text style={style.main_info_text}>Девочка</Text>:
                 <Text style = {style.main_info_text}>Мальчик</Text>
           }
@@ -75,7 +75,7 @@ const AnimalDescription = () => {
           </Text>
           <Text style={style.main_info_text}>
             {
-              showAnimalType(animals.currentAnimal.type)
+              showAnimalType(animals.currentAnimal.Type)
             }
           </Text>
         </View>
@@ -86,10 +86,20 @@ const AnimalDescription = () => {
           </Text>
           <Text style={style.main_info_text}>
           {
-            animals.currentAnimal.shelter
+            animals.currentAnimal.Shelter
           }
         </Text>
         </View>
+
+        <View style = {style.main_info_container}>
+          <Text style={style.main_info_text_field}>
+            Номер телефона
+          </Text>
+          <Text style={style.main_info_text}>
+            +375439629465
+          </Text>
+        </View>
+
         <YaMap
             showUserPosition={false}
             rotateGesturesEnabled={false}

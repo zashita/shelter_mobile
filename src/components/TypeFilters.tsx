@@ -9,24 +9,21 @@ const TypeFilters = observer(() => {
 
 
   const onDogToggle = () => {
-    filters.setDog(filters.dog === true ? false : true);
+    filters.setDog(filters.typeFilters.includes('Собака')? false : true);
   };
 
   const onCatToggle = () => {
-    filters.setCat(filters.cat === true ? false : true);
+    filters.setCat(filters.typeFilters.includes('Кот')? false : true);
   };
 
-  const onMouseToggle = () => {
-    filters.setMouse(filters.mouse === true ? false : true);
+  const onOtherToggle = () => {
+    filters.setOther(filters.typeFilters.includes('Другой')? false : true);
   };
 
   const onBirdToggle = () => {
-    filters.setBird(filters.bird === true ? false : true);
+    filters.setBird(filters.typeFilters.includes('Птица')? false : true);
   };
 
-  const onFishToggle = () => {
-    filters.setFish(filters.fish === true? false: true)
-  };
 
 
   return (
@@ -35,29 +32,24 @@ const TypeFilters = observer(() => {
         <FilterButton
           onPress={()=>onDogToggle()}
           text={'Собаку'}
-          active={filters.dog}
+          active={filters.typeFilters.includes('Собака')}
           />
         <FilterButton
           onPress={()=>onCatToggle()}
           text={'Кота'}
-          active={filters.cat}
+          active={filters.typeFilters.includes('Кот')}
         />
         <FilterButton
-          onPress={()=>onMouseToggle()}
-          text={'Грызуна'}
-          active={filters.mouse}
+            onPress={()=>onBirdToggle()}
+            text={'Птицу'}
+            active={filters.typeFilters.includes('Птица')}
         />
       </View>
       <View style={style.secondLine}>
       <FilterButton
-        onPress={()=>onBirdToggle()}
-        text={'Птицу'}
-        active={filters.bird}
-      />
-      <FilterButton
-        onPress={()=>onFishToggle()}
-        text={'Рыбку'}
-        active={filters.fish}
+        onPress={()=>onOtherToggle()}
+        text={'Другое'}
+        active={filters.typeFilters.includes('Другой')}
       />
       </View>
     </>

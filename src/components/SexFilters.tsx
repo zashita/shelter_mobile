@@ -8,28 +8,23 @@ import { observer } from "mobx-react-lite";
 const SexFilters = observer(() => {
 
   const maleToggle = () =>{
-    filters.setMale(filters.male === true? false: true)
-    filters.setFemale(filters.female === true? false: false)
-    filters.setSterialized(filters.sterialized === true? false: false)
-
+    filters.setSex(0)
   }
 
   const femaleToggle = () =>{
-    filters.setFemale(filters.female === true? false: true)
-    filters.setMale(filters.male === true? false: false)
-    filters.setCastrated(filters.castrated === true? false: false)
+    filters.setSex(1)
   }
   return (
     <View
       style={style.line}>
       <FilterButton
         onPress={()=>maleToggle()}
-        active = {filters.male}
+        active = {filters.sex === 0}
         text={'Мужской'}
         />
       <FilterButton
         onPress={()=>femaleToggle()}
-        active = {filters.female}
+        active = {filters.sex === 1}
         text={'Женский'}
       />
     </View>

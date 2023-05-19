@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import {Image, SafeAreaView, StyleSheet, Text, View} from "react-native";
 import {Button} from "react-native-paper";
-import style from '../styles/animals.description.scss'
 import animals from '../store/Animals';
 import ShareSVG from  '../assets/img/shareIcon.svg'
 import LikeSVG from '../assets/img/LikeScreen.svg';
@@ -11,6 +10,7 @@ import AnimalSlider from "../components/AnimalSlider";
 import url from "../url";
 import liked from "../store/Liked";
 import {observer} from "mobx-react-lite";
+import OtherInfo from "../components/OtherInfo";
 
 const API_KEY = '08eba25e-17db-40ea-9de8-397c8d2f4e34'
 YaMap.init(API_KEY);
@@ -58,11 +58,7 @@ const AnimalDescription = observer(() => {
     </View>
       <View style={style.bottom_container}>
         <Text style={style.name_text}>{animals.currentAnimal.name}, {animals.currentAnimal.age}</Text>
-        <View
-          style={style.other_info_container}>
-
-
-        </View>
+        <OtherInfo/>
         <View style = {style.main_info_container}>
           <Text style={style.main_info_text_field}>
             Пол
@@ -136,109 +132,99 @@ const AnimalDescription = observer(() => {
       </>
   );
 })
-// const style = StyleSheet.create({
-//   button:{
-//   height: 30,
-//   width: 30,
-//   justifySelf: 'center',
-// },
-//
-// top_container:{
-//   display: flex,
-//   flex-direction: row,
-//   justify-content: space-between,
-//   background-color: #ffffff,
-//   padding-top: 30px,
-//   padding-left: 10px,
-//
-//
-// }
-//
-// ,animal_image:{
-//   width: 160px,
-//   height: 160px,
-//   border-radius: 228px,
-//   align-self: center,
-//   margin-top: 30px,
-//
-// }
-// ,bottom_container:{
-//   width: 90%,
-//   border-radius: 20px,
-//   margin-top: 0,
-//   height: 600px,
-//   align-self: center,
-//
-// }
-// ,global_container:{
-//   background-color: white,
-//   height: 100%,
-//
-// }
-//
-// ,bottom_container:{
-//   padding: 20,
-// }
-//
-// ,name_text:{
-//   color: '#000',
-//   font-size: 24,
-//   margin-bottom: 20,
-//   align-self: 'center',
-//
-// }
-//
-// ,other_info_container:{
-//   background:' #EDEDED',
-//   border-radius: 8,
-//   width: '100%',
-//   padding: 15,
-//   margin-bottom: 15,
-//
-// }
-//
-// ,other_info_text:{
-//   background: '#FFD5B0',
-//   border-radius: 10,
-//   color: black,
-//   padding: 6 14,
-//   font-size: 14,
-// }
-// ,top_divider:{
-//   width: 251,
-//   height: 9,
-//   align-self: 'center',
-//   margin-top: 15,
-//
-//   background: '#D9D9D9',
-//   border-radius: 10,
-// }
-//
-// ,main_info_text:{
-//   color:' #7C7C7C',
-//   font-size: 16,
-//   margin-bottom: 15,
-// }
-//
-// ,main_info_text_field:{
-//   color: '#000',
-//   font-size: 16,
-//   margin-bottom: 15,
-// }
-//
-// ,main_info_container:{
-//   display: 'flex',
-//   flex-direction: 'row',
-//   justify-content: 'space-between',
-//   align-items: 'center',
-//   width: '60%',
-// }
-//
-// ,additional_info_text:{
-//   color: #000,
-//   font-size: 15px,
-//   margin-bottom: 20px,
-// }
-// })
+
 
 export default AnimalDescription;
+
+const style = StyleSheet.create({
+  button: {
+    height: 30,
+    width: 30,
+    // alignSelf: 'center',
+  },
+  top_container: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: '#ffffff',
+    paddingTop: 30,
+    paddingLeft: 10,
+  },
+  animal_image: {
+    width: 160,
+    height: 160,
+    borderRadius: 228,
+    alignSelf: 'center',
+    marginTop: 30,
+  },
+  bottom_container: {
+    width: '90%',
+    borderRadius: 20,
+    marginTop: 20,
+    height: 600,
+    alignSelf: 'center',
+  },
+  global_container: {
+    backgroundColor: 'white',
+    height: '100%',
+  },
+  global_container_active: {
+    backgroundColor: 'white',
+    height: '100%',
+    opacity: 0.2,
+  },
+  // bottom_container: {
+  //   padding: 20,
+  // },
+  name_text: {
+    color: '#000',
+    fontSize: 24,
+    marginBottom: 20,
+    alignSelf: 'center',
+  },
+  other_info_container: {
+    background: '#EDEDED',
+    borderRadius: 8,
+    width: '100%',
+    padding: 15,
+    marginBottom: 15,
+  },
+  other_info_text: {
+    background: '#FFD5B0',
+    borderRadius: 10,
+    color: 'black',
+    paddingVertical: 6,
+    paddingHorizontal: 14,
+    fontSize: 14,
+  },
+  top_divider: {
+    width: 251,
+    height: 9,
+    alignSelf: 'center',
+    marginTop: 15,
+    backgroundColor: '#D9D9D9',
+    borderRadius: 10,
+  },
+  main_info_text: {
+    color: '#7C7C7C',
+    fontSize: 16,
+    marginBottom: 15,
+  },
+  main_info_text_field: {
+    color: '#000',
+    fontSize: 16,
+    marginBottom: 15,
+  },
+  main_info_container: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
+  },
+  additional_info_text: {
+    color: '#000',
+    fontSize: 15,
+    marginBottom: 20,
+  },
+});

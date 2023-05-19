@@ -33,13 +33,25 @@ const OtherInfo = observer(() => {
 
     }
     return (
-        <View style={style.block}>
+        <View style={info.length < 3?style.block2: style.block4}>
             {
                 info.map((block, index) => {
                     return(
                         <>
                             {
-
+                                index ===0?
+                                    <Text style={style.text1}>
+                                        {block}
+                                    </Text>: index === 1?
+                                        <Text style={style.text2}>
+                                            {block}
+                                        </Text>: index === 2?
+                                            <Text style={style.text3}>
+                                                {block}
+                                            </Text>:index === 3?
+                                                <Text style={style.text4}>
+                                                    {block}
+                                                </Text>:<Text/>
                             }
                         </>
                     )
@@ -52,21 +64,72 @@ const OtherInfo = observer(() => {
 export default OtherInfo;
 
 const style = StyleSheet.create({
-    block:{
-        background: '#EDEDED',
-        borderRadius: 8,
+    block2:{
+        backgroundColor: '#EDEDED',
+        borderRadius: 10,
         width: '100%',
         padding: 15,
-        marginBottom: 15
+        marginBottom: 15,
+        height: 52
     },
-    text:{
-        background: '#FFD5B0',
+    block4:{
+        backgroundColor: '#EDEDED',
+        borderRadius: 10,
+        width: '100%',
+        padding: 15,
+        marginBottom: 15,
+        height: 95
+    },
+    text1:{
+        position: 'absolute',
+        backgroundColor: '#FFD5B0',
         borderRadius: 10,
         color: 'black',
         paddingLeft: 14,
         paddingRight: 14,
         paddingTop: 6,
         paddingBottom: 6,
-        fontSize: 14
+        fontSize: 14,
+        left: 10,
+        top: 10,
+    },
+    text2:{
+        position: 'absolute',
+        backgroundColor: '#FFD5B0',
+        borderRadius: 10,
+        color: 'black',
+        paddingLeft: 14,
+        paddingRight: 14,
+        paddingTop: 6,
+        paddingBottom: 6,
+        fontSize: 14,
+        right: 10,
+        top: 10,
+    },
+    text3:{
+        position: 'absolute',
+        backgroundColor: '#FFD5B0',
+        borderRadius: 10,
+        color: 'black',
+        paddingLeft: 14,
+        paddingRight: 14,
+        paddingTop: 6,
+        paddingBottom: 6,
+        fontSize: 14,
+        left: 10,
+        top: 50,
+    },
+    text4:{
+        position: 'absolute',
+        backgroundColor: '#FFD5B0',
+        borderRadius: 10,
+        color: 'black',
+        paddingLeft: 14,
+        paddingRight: 14,
+        paddingTop: 6,
+        paddingBottom: 6,
+        fontSize: 14,
+        right: 10,
+        top: 50,
     }
 })

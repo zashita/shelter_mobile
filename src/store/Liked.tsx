@@ -4,7 +4,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 class Liked{
 
-    likedID: string[] = []
+    likedID: number[] = []
 
     constructor() {
         makeAutoObservable(this)
@@ -12,17 +12,17 @@ class Liked{
 
     setLikedId(newId: number)
     {
-        this.likedID.push(newId.toString())
+        this.likedID.push(newId)
         AsyncStorage.setItem('liked', JSON.stringify(this.likedID))
             .then(json => console.log('success!'))
             .catch(error => console.log('error!'));
     }
      likedState(id: number){
-        return this.likedID.includes(id.toString())
+        return this.likedID.includes(id)
      }
 
      deleteLikedId(id: number){
-        this.likedID.splice(this.likedID.indexOf(id.toString()), 1)
+        this.likedID.splice(this.likedID.indexOf(id), 1)
          AsyncStorage.setItem('liked', JSON.stringify(this.likedID))
              .then(json => console.log('success!'))
              .catch(error => console.log('error!'));

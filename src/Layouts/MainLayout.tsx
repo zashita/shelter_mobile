@@ -3,7 +3,7 @@ import {StyleSheet, Text, View} from "react-native";
 import LocationSVG from "../assets/img/locationblack.svg";
 import LinearGradient from "react-native-linear-gradient";
 import Wrapper from "../components/Wrapper";
-import Search from "../components/SearchBlock";
+import Search from "../components/Search";
 import {ActivityIndicator} from "react-native-paper";
 import AnimalsList from "../components/AnimalsList";
 import AnimalsArr from "../store/Animals";

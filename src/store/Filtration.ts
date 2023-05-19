@@ -1,59 +1,61 @@
 import {IAnimal} from "../types/Animal";
 import {makeAutoObservable} from "mobx";
 import axios from "axios";
+import typeFilters from "../components/TypeFilters";
 
 class Filters{
-  dog: boolean = false
-  cat: boolean = false
-  mouse: boolean = false
-  bird: boolean = false
 
-  fish: boolean = false
-
-  male: boolean = false
-
-  female: boolean = false
-
-  castrated: boolean = false;
-
+  typeFilters: string[] = [];
+  sex: number | null = null;
   sterialized: boolean = false
-
   vaccinated: boolean = false;
-
   ageMin:number = 0;
   ageMax: number = 20;
-
-
-
 
   constructor() {
     makeAutoObservable(this)
   }
 
   setDog(newValue: boolean){
-    this.dog = newValue
+    if(newValue){
+      this.typeFilters.push('Собака')
+    } else{
+      this.typeFilters.splice(this.typeFilters.indexOf('Собака'), 1)
+    }
 }
   setCat(newValue: boolean){
-    this.cat = newValue
+    if(newValue){
+      this.typeFilters.push('Кот')
+    } else{
+      this.typeFilters.splice(this.typeFilters.indexOf('Кот'), 1)
+    }
   }
-  setMouse(newValue: boolean){
-    this.mouse = newValue
+  setOther(newValue: boolean){
+    if(newValue){
+      this.typeFilters.push('Другой')
+    } else{
+      this.typeFilters.splice(this.typeFilters.indexOf('Другой'), 1)
+    }
   }
   setBird(newValue: boolean){
-    this.bird = newValue
+    if(newValue){
+      this.typeFilters.push('Птица')
+    } else{
+      this.typeFilters.splice(this.typeFilters.indexOf('Птица'), 1)
+    }
   }
-  setFish(newValue: boolean){
-    this.fish = newValue
+
+
+  setSex(newValue: number){
+    if(this.sex === null|| this.sex !== newValue){
+      this.sex = newValue
+    }
+    else
+    {
+      this.sex = null
+    }
   }
-  setMale(newValue: boolean){
-    this.male = newValue
-  }
-  setFemale(newValue: boolean){
-    this.female = newValue
-  }
-  setCastrated(newValue: boolean){
-    this.castrated = newValue
-  }
+
   setSterialized(newValue: boolean){
     this.sterialized = newValue
   }

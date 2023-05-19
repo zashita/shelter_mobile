@@ -1,6 +1,5 @@
 import React, {useState} from "react";
-import {Alert, TextInput, View} from "react-native";
-import style from "../styles/filters.scss";
+import {Alert, StyleSheet, TextInput, View} from "react-native";
 import { ProgressBar } from "react-native-paper";
 import RangeSlider from "./RangeSlider";
 import filters from '../store/Filtration'
@@ -58,3 +57,13 @@ const AgeFilters = observer(() => {
 })
 
 export default AgeFilters;
+const style = StyleSheet.create({
+    age_input: {
+        width: '47%',
+        backgroundColor: '#fff',
+        borderRadius: 20,
+        paddingLeft: 20,
+        paddingRight: 20,
+        color: '#888888',
+    },
+});

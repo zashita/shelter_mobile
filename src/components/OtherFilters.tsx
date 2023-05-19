@@ -7,16 +7,9 @@ import { observer } from "mobx-react-lite";
 
 const OtherFilters = observer(() => {
 
-  const castrToggle = () =>{
-    if(!filters.female) {
-      filters.setCastrated(filters.castrated === true ? false : true);
-    }
-  }
 
   const sterToggle = () =>{
-    if(!filters.male) {
       filters.setSterialized(filters.sterialized === true ? false : true);
-    }
   }
 
   const vacToggle = () =>{
@@ -28,22 +21,17 @@ const OtherFilters = observer(() => {
       <View
         style={style.line}>
         <FilterButton
-          onPress={()=>castrToggle()}
-          active = {filters.castrated}
-          text={'Кастрирован'}
-        />
-        <FilterButton
           onPress={()=>sterToggle()}
           active = {filters.sterialized}
           text={'Стерилизован'}
         />
+        <FilterButton
+            onPress={()=>vacToggle()}
+            active = {filters.vaccinated}
+            text={'Есть прививка'}
+        />
 
       </View>
-      <FilterButton
-        onPress={()=>vacToggle()}
-        active = {filters.vaccinated}
-        text={'Есть прививка'}
-      />
     </>
   );
 })

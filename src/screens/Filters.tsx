@@ -3,7 +3,7 @@ import {Alert, StyleSheet, TextInput, View} from "react-native";
 import LocationSVG from "../assets/img/locationblack.svg";
 import LinearGradient from "react-native-linear-gradient";
 import Wrapper from "../components/Wrapper";
-import Search from "../components/SearchBlock";
+import Search from "../components/Search";
 import Navbar from "../components/Navbar";
 import FilterSVG from '../assets/img/FiltrIconWhite.svg'
 import {Button, ProgressBar, ToggleButton} from "react-native-paper";
@@ -29,20 +29,6 @@ const Filters = (props: IFiltersProps) => {
     const [status, setStatus]: any = React.useState('unchecked');
 
     const setOptions = () =>{
-        const newUrl = new URL(server_url)
-        if(filters.dog){
-            newUrl.searchParams.append('type', 'dog')
-        }
-        if(filters.cat){
-            newUrl.searchParams.append('type', 'cat')
-        }
-        if(filters.male){
-            newUrl.searchParams.append('sex', 'male')
-        }
-        if(filters.female){
-            newUrl.searchParams.append('sex', 'female')
-        }
-        animals.setUrl(newUrl);
         props.navigation.navigate("Main")
     }
 

@@ -6,45 +6,14 @@
  */
 
 import React, {useEffect, useState} from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  Image,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text, TextInput,
-  useColorScheme,
-  View
-} from "react-native";
-import LocationSVG from '../assets/img/locationblack.svg';
-import Header from '../components/Header/index'
-
-import {
-  Colors,
-  DebugInstructions,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-import Categories from "../components/Categories";
-import Search from "../components/SearchBlock";
-import Navbar from "../components/Navbar";
-import Wrapper from "../components/Wrapper";
-import LinearGradient from 'react-native-linear-gradient';
 import animals from '../store/Animals'
 import {observer} from "mobx-react-lite";
 import {ActivityIndicator} from "react-native-paper";
 import MainLayout from "../Layouts/MainLayout";
-import Navigation from '../store/Navigation'
-import News from "./News";
-import news from '../store/News'
-import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
-import {NavigationContainer} from "@react-navigation/native";
-import AnimalsArr from "../store/Animals";
 import AnimalsList from "../components/AnimalsList";
-import url from "../url";
 import search from "../store/Search";
 import liked from "../store/Liked";
+import filtration from "../store/Filtration";
 
 export interface IAnimalsProps{
   navigation: any;
@@ -59,9 +28,33 @@ const Main:React.FC<IAnimalsProps> = observer(({navigation}) => {
       then(promise => liked.setLiked().
       then(promise => setLoading(false)))
   }, [animals.url])
- const filteredAnimals = animals.animals.filter(animal => {
+ const searchedAnimals = animals.animals.filter(animal => {
      return search.searchString !== undefined?animal.name.toLowerCase().includes(search.searchString.toLowerCase()): animal
  })
+
+    const filteredAnimalsTypes = searchedAnimals.filter(animal => {
+        return (
+        filtration.typeFilters.length > 0?
+            filtration.typeFilters.includes(animal.type): animal
+    )
+    })
+    const filteredAnimalsSex = filteredAnimalsTypes.filter(animal => {
+        return (
+            filtration.sex !== null?
+                filtration.sex === animal.sex: animal
+        )
+    })
+
+    const filteredAnimalsByAge = filteredAnimalsSex.filter((animal)=>{
+        return animal.age >= filtration.ageMin && animal.age <= filtration.ageMax
+    })
+    const filteredAnimalsBySter = filteredAnimalsByAge.filter((animal)=>{
+        return filtration.sterialized? animal.sterilized: animal
+    })
+
+    const filteredAnimals = filteredAnimalsBySter.filter((animal)=>{
+        return filtration.vaccinated? animal.vaccinated: animal
+    })
   return (
 
     <MainLayout navigation={navigation}>

@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
 import {Alert, Image, NativeEventEmitter, StyleSheet, TextInput, View} from 'react-native';
-import styles from './style.scss';
-import FiltrSVG from '../../assets/img/FiltrIcon.svg';
-import SearchSVG from '../../assets/img/icons8-search.svg';
+import FiltrSVG from '../assets/img/FiltrIcon.svg';
+import SearchSVG from '../assets/img/icons8-search.svg';
 import {Button} from "react-native-paper";
-import Navigation from "../../store/Navigation"
+import Navigation from "../store/Navigation"
 import {observer} from "mobx-react-lite";
-import search from "../../store/Search";
+import search from "../store/Search";
 
 export interface ISearchProps{
     navigation: any;
@@ -47,3 +46,31 @@ const Search = observer((props: ISearchProps) => {
 })
 
 export default Search;
+
+const styles = StyleSheet.create({
+    searchBlock: {
+        width: '100%',
+        display: 'flex',
+        backgroundColor: '#fff',
+        borderRadius: 30,
+        flexDirection: 'row',
+        height: 40,
+        marginBottom: 31,
+        alignItems: 'center',
+    },
+    input: {
+        width: '75%',
+        backgroundColor: '#fff',
+        fontSize: 15,
+        fontWeight: '400',
+        textAlign: 'left',
+        color: '#C1C1C1',
+    },
+    searchImage: {
+        width: 35,
+        height: 35,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+});

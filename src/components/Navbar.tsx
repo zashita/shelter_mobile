@@ -1,16 +1,16 @@
 import React from 'react';
 import {Image, StyleSheet, View} from 'react-native';
-import HomeSVG from '../../assets/img/HomeInactive.svg';
-import InfoSVG from '../../assets/img/InfoInactive.svg'
-import GiftSVG from '../../assets/img/GiftInactive.svg'
-import LikeSVG from '../../assets/img/LikeScreen.svg'
-import HomeActiveSVG from '../../assets/img/HomeActive.svg'
-import InfoActiveSVG from '../../assets/img/InfoActive.svg'
-import GiftActiveSVG from '../../assets/img/GiftActive.svg'
-import LikeActiveSVG from '../../assets/img/LikeActive.svg'
+import HomeSVG from '../assets/img/HomeInactive.svg';
+import InfoSVG from '../assets/img/InfoInactive.svg'
+import GiftSVG from '../assets/img/GiftInactive.svg'
+import LikeSVG from '../assets/img/LikeScreen.svg'
+import HomeActiveSVG from '../assets/img/HomeActive.svg'
+import InfoActiveSVG from '../assets/img/InfoActive.svg'
+import GiftActiveSVG from '../assets/img/GiftActive.svg'
+import LikeActiveSVG from '../assets/img/LikeActive.svg'
 import {Button} from "react-native-paper";
 import {observer} from "mobx-react-lite";
-import Navigation from "../../store/Navigation";
+import Navigation from "../store/Navigation";
 
 export interface NavbarProps{
     navigation: any;

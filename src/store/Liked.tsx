@@ -10,19 +10,19 @@ class Liked{
         makeAutoObservable(this)
     }
 
-    setLikedId(newId: string)
+    setLikedId(newId: number)
     {
-        this.likedID.push(newId)
+        this.likedID.push(newId.toString())
         AsyncStorage.setItem('liked', JSON.stringify(this.likedID))
             .then(json => console.log('success!'))
             .catch(error => console.log('error!'));
     }
-     likedState(id: string){
-        return this.likedID.includes(id)
+     likedState(id: number){
+        return this.likedID.includes(id.toString())
      }
 
-     deleteLikedId(id: string){
-        this.likedID.splice(this.likedID.indexOf(id), 1)
+     deleteLikedId(id: number){
+        this.likedID.splice(this.likedID.indexOf(id.toString()), 1)
          AsyncStorage.setItem('liked', JSON.stringify(this.likedID))
              .then(json => console.log('success!'))
              .catch(error => console.log('error!'));

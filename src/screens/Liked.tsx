@@ -59,11 +59,11 @@ const Liked:React.FC<IAnimalsProps> = observer(({navigation}) => {
         liked.setLiked().then(promise=> setLoading(false))
     },[])
     const filteredAnimals = animals.animals.filter(animal => {
-        return search.searchString !== undefined?animal.Name.toLowerCase().includes(search.searchString.toLowerCase()): animal
+        return search.searchString !== undefined?animal.name.toLowerCase().includes(search.searchString.toLowerCase()): animal
     })
 
     const likedAnimals = filteredAnimals.filter(animal => {
-        return liked.likedID.includes(animal.ID)
+        return liked.likedID.includes(animal.id.toString())
     })
 
     // const getData = async () => {

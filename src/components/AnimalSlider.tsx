@@ -1,5 +1,8 @@
 import React, {useState} from 'react';
 import {Dimensions, Image, SafeAreaView, ScrollView, StyleSheet, Text, View} from "react-native";
+import url from "../url";
+import animals from "../store/Animals";
+import {observer} from "mobx-react-lite";
 
 export interface AnimalSliderProps{
     sliderActive: boolean;
@@ -7,16 +10,13 @@ export interface AnimalSliderProps{
 }
 
 
-const images = [
-    require('../assets/img/examplecard.png'),
-    require('../assets/img/examplecard.png'),
-    require('../assets/img/examplecard.png'),
-]
+
 
 const WIDTH = Dimensions.get('window').width
 const HEIGHT = Dimensions.get('window').height
 
-const AnimalSlider:React.FC<AnimalSliderProps> = ({sliderActive, setSliderActive}) => {
+const AnimalSlider:React.FC<AnimalSliderProps> = observer(({sliderActive, setSliderActive}) => {
+    const images = animals.currentAnimal.photos
     const [ImgActive, setImgActive] = useState(0)
 
     const onChange = (nativeEvent: any) =>{
@@ -50,7 +50,11 @@ const AnimalSlider:React.FC<AnimalSliderProps> = ({sliderActive, setSliderActive
                                 key = {index}
                                 resizeMode={'stretch'}
                                 style={styles.image}
-                                source={image}
+                                source={
+                                    {
+                                        uri: url.image + image
+                                    }
+                                }
                                 />
                             )
                             }
@@ -74,7 +78,7 @@ const AnimalSlider:React.FC<AnimalSliderProps> = ({sliderActive, setSliderActive
             </View>
         </SafeAreaView>
     );
-};
+})
 
 const styles = StyleSheet.create({
     container:{
@@ -92,7 +96,7 @@ const styles = StyleSheet.create({
     },
     image: {
         width: WIDTH - 20,
-        height: HEIGHT* 0.75,
+        height: HEIGHT* 0.33,
         alignSelf: "center",
         marginTop: HEIGHT * 0.25,
         borderRadius: 20

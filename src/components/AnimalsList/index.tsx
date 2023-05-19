@@ -8,6 +8,7 @@ import animals from '../../store/Animals'
 import {IAnimal} from "../../types/Animal";
 import {observer} from "mobx-react-lite";
 import liked from "../../store/Liked";
+import url from "../../url";
 
 export interface IAnimalListProps {
   animals: IAnimal[];
@@ -21,7 +22,7 @@ const AnimalsList = observer((props: IAnimalListProps) => {
     animals.setCurrentAnimal(current);
     props.navigation.navigate("AnimalsDescription")
   }
-  const Liked = (id: string) =>{
+  const Liked = (id: number) =>{
     if(liked.likedState(id)){
       liked.deleteLikedId(id)
     } else{
@@ -32,28 +33,32 @@ const AnimalsList = observer((props: IAnimalListProps) => {
   }
   const AnimalsViewList = [...props.animals].map(animal => {
     return (
-      <View style={styles.card} key = {animal.ID}>
+      <View style={styles.card} key = {animal.id}>
         <View onTouchEnd={() => CardOpen(animal)}>
         <Image
           style={styles.animal_img}
-          source={require('../../assets/img/examplecard.png')}
+          source={
+            {
+              uri: url.image + animal.photos[0]
+            }
+          }
         />
         </View>
         <View style={styles.info_container}>
           <View style={styles.info_line}>
-            <Text style={styles.name_text}>{animal.Name}</Text>
-            <Text style={styles.description_text}>{animal.Type}</Text>
+            <Text style={styles.name_text}>{animal.name}</Text>
+            <Text style={styles.description_text}>{animal.type}</Text>
           </View>
-          <Text style={styles.age_text}>{animal.Age}</Text>
+          <Text style={styles.age_text}>{animal.age}</Text>
           <View style={styles.info_line}>
             <View style={styles.location}>
               <LocationSVG/>
-              <Text style={styles.location_text}>{animal.Shelter}</Text>
+              <Text style={styles.location_text}>{animal.shelter}</Text>
             </View>
           </View>
-          <View onTouchEnd={() => Liked(animal.ID)} style={styles.like_img}>
+          <View onTouchEnd={() => Liked(animal.id)} style={styles.like_img}>
             {
-              liked.likedState(animal.ID)?<LikedActiveSvg/>: <LikeSVG/>
+              liked.likedState(animal.id)?<LikedActiveSvg/>: <LikeSVG/>
             }
 
           </View>

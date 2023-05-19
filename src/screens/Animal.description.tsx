@@ -4,24 +4,27 @@ import {Button} from "react-native-paper";
 import style from '../styles/animals.description.scss'
 import animals from '../store/Animals';
 import ShareSVG from  '../assets/img/shareIcon.svg'
-import LikeSVG from '../assets/img/share-1-svgrepo-com.svg'
+import LikeSVG from '../assets/img/LikeScreen.svg';
+import LikeActiveSVG from '../assets/img/LikeDescActive.svg'
 import {YaMap, Marker, Circle} from 'react-native-yamap';
 import AnimalSlider from "../components/AnimalSlider";
+import url from "../url";
+import liked from "../store/Liked";
+import {observer} from "mobx-react-lite";
 
 const API_KEY = '08eba25e-17db-40ea-9de8-397c8d2f4e34'
 YaMap.init(API_KEY);
 
-const AnimalDescription = () => {
-
-  const showAnimalType = (type: string) =>{
-    switch (type.toLowerCase()){
-      case 'cat': return 'Кот';
-      case 'dog': return 'Собака';
-      case 'other': return 'Другой';
-    }
-  }
+const AnimalDescription = observer(() => {
 
   const [SliderActive, setSliderActive] = useState(false)
+  const Liked = (id: number) => {
+    if (liked.likedState(id)) {
+      liked.deleteLikedId(id)
+    } else {
+      liked.setLikedId(id)
+    }
+  }
 
   return (
       <>
@@ -37,25 +40,27 @@ const AnimalDescription = () => {
         onTouchEnd={() => setSliderActive(true)}>
       <Image
         style={style.animal_image}
-        source={require('../assets/img/examplecard.png')}
+        source={{
+          uri: url.image + animals.currentAnimal.photos[0]
+        }}
       />
       </View>
-      <Button icon={LikeSVG} mode="contained" buttonColor={"transparent"} style={style.button}>
+      <Button
+          icon={liked.likedState(animals.currentAnimal.id)?LikeActiveSVG: LikeSVG}
+          mode="contained"
+          buttonColor={"transparent"}
+          style={style.button}
+          onPress={() => Liked(animals.currentAnimal.id)}
+      >
 
       </Button>
 
     </View>
       <View style={style.bottom_container}>
-        <Text style={style.name_text}>{animals.currentAnimal.Name}, {animals.currentAnimal.Age}</Text>
+        <Text style={style.name_text}>{animals.currentAnimal.name}, {animals.currentAnimal.age}</Text>
         <View
           style={style.other_info_container}>
-            {/*<View style={{display: 'flex', flexDirection: 'row', columnGap: 10}}>*/}
-            {/*  {*/}
-            {/*    animals.currentAnimal.castrated ?*/}
-            {/*        <Text style={style.other_info_text}>Кастрирован</Text>*/}
-            {/*        : <Text></Text>*/}
-            {/*  }*/}
-            {/*</View>*/}
+
 
         </View>
         <View style = {style.main_info_container}>
@@ -63,7 +68,7 @@ const AnimalDescription = () => {
             Пол
           </Text>
           {
-            animals.currentAnimal.Sex === 1?
+            animals.currentAnimal.sex === 1?
                 <Text style={style.main_info_text}>Девочка</Text>:
                 <Text style = {style.main_info_text}>Мальчик</Text>
           }
@@ -75,7 +80,7 @@ const AnimalDescription = () => {
           </Text>
           <Text style={style.main_info_text}>
             {
-              showAnimalType(animals.currentAnimal.Type)
+              animals.currentAnimal.type
             }
           </Text>
         </View>
@@ -86,7 +91,7 @@ const AnimalDescription = () => {
           </Text>
           <Text style={style.main_info_text}>
           {
-            animals.currentAnimal.Shelter
+            animals.currentAnimal.shelter
           }
         </Text>
         </View>
@@ -130,7 +135,7 @@ const AnimalDescription = () => {
 
       </>
   );
-};
+})
 // const style = StyleSheet.create({
 //   button:{
 //   height: 30,

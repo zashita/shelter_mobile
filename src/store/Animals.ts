@@ -2,23 +2,24 @@ import {IAnimal} from "../types/Animal";
 import {makeAutoObservable} from "mobx";
 import axios from "axios";
 import url from '../url'
-import server_url from "../url";
 
 
 class Animals{
-    url: URL = new URL(server_url);
+    url: URL = new URL(url.server);
     animals: IAnimal[] = [];
     currentAnimal: IAnimal = {
-        ID:"1",
-        Age:3,
-        Name:"Шарик",
-        Sex:1,
-        Type:"CAT",
-        Description:"",
-        Sterilized:true,
-        Vaccinated:false,
-        Shelter:"Super Cat",
-        Photo:""
+    id:1,
+    age:12,
+    name: "Василиса",
+    sex:1,
+    type:"Кот",
+    description:"Кошечка Василиса ищет новых хозяев",
+    sterilized:true,
+    vaccinated:false,
+    on_rainbow:false,
+    on_happiness:false,
+    shelter:"Фауна Города",
+    photos:["/animals/cat1.jpeg","/animals/cat11.jpeg"]
     };
 
     constructor() {

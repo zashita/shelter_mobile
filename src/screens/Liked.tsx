@@ -26,11 +26,8 @@ const Liked:React.FC<IAnimalsProps> = observer(({navigation}) => {
     useEffect(()=>{
         liked.setLiked().then(promise=> setLoading(false))
     },[])
-    const filteredAnimals = animals.animals.filter(animal => {
-        return search.searchString !== undefined?animal.name.toLowerCase().includes(search.searchString.toLowerCase()): animal
-    })
 
-    const likedAnimals = filteredAnimals.filter(animal => {
+    const likedAnimals = animals.animals.filter(animal => {
         return liked.likedID.includes(animal.id)
     })
 

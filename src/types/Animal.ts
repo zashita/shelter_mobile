@@ -10,23 +10,11 @@ export interface IAnimal{
     on_rainbow:boolean;
     on_happiness:boolean;
     shelter:string;
+    address: string;
+    phone: string;
     photos: string[];
 }
 
-export interface IAnim{
-    id: number;
-    age: number;
-    name: string;
-    sex: 0 | 1;
-    type: string;
-    description:string;
-    sterilized:boolean;
-    vaccinated:boolean;
-    on_rainbow:boolean;
-    on_happiness:boolean;
-    shelter:string;
-    photos: string[];
-}
 
 // export interface IAnim{
 //     id:1,

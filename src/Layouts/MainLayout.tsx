@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View} from "react-native";
+import {Dimensions, StyleSheet, Text, View} from "react-native";
 import LocationSVG from "../assets/img/locationblack.svg";
 import LinearGradient from "react-native-linear-gradient";
 import Wrapper from "../components/Wrapper";
@@ -10,7 +10,9 @@ import AnimalsArr from "../store/Animals";
 import Navbar from "../components/Navbar";
 import Navigation from '../store/Navigation';
 import GiftWhiteSVG from '../assets/img/GiftWhite.svg';
-import LikeWhiteSVG from '../assets/img/LikeWhite.svg'
+import LikeWhiteSVG from '../assets/img/LikeWhite.svg';
+
+const HEIGHT = Dimensions.get('screen').height
 
 export interface MainLayoutProps{
     navigation: any;
@@ -86,7 +88,8 @@ const styles = StyleSheet.create({
         display: `flex`,
         flexDirection: "row",
         marginBottom: 75,
-        alignItems: `center`
+        alignItems: `center`,
+        height: 30
 
     },
     location_text:{
@@ -96,7 +99,7 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
     main_block: {
-        height: '88.8%',
+        height: 0.847 * HEIGHT,
         backgroundColor: `#F4F4F4`,
         borderRadius: 40,
     },

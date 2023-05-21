@@ -11,8 +11,8 @@ import {Text} from 'react-native-paper'
 import {TextField} from "@mui/material";
 import style from '../styles/filters.scss'
 import animals from "../store/Animals";
-import url from "../url";
-import server_url from "../url";
+import server from "../server";
+import server_url from "../server";
 import TypeFilters from "../components/TypeFilters";
 import SexFilters from "../components/SexFilters";
 import filters from "../store/Filtration"

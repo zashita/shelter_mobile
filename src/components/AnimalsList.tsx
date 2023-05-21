@@ -7,7 +7,7 @@ import animals from '../store/Animals'
 import {IAnimal} from "../types/Animal";
 import {observer} from "mobx-react-lite";
 import liked from "../store/Liked";
-import url from "../url";
+import server from "../server";
 
 export interface IAnimalListProps {
   animals: IAnimal[];
@@ -28,7 +28,17 @@ const AnimalsList = observer((props: IAnimalListProps) => {
       liked.setLikedId(id)
     }
 
-
+  }
+  const checkAge = (number: number) =>{
+    let numStr = number.toString();
+    let num = numStr[numStr.length - 1];
+    if (num === '1' && numStr.length === 1){
+      return 'год'
+    } else if ((num=== '2'|| num === '3'|| num === '4') && numStr[0] !== '1'){
+      return 'года'
+    } else{
+      return 'лет'
+    }
   }
   const AnimalsViewList = [...props.animals].map(animal => {
     return (
@@ -38,7 +48,7 @@ const AnimalsList = observer((props: IAnimalListProps) => {
           style={styles.animal_img}
           source={
             {
-              uri: url.image + animal.photos[0]
+              uri: server.image + animal.photos[0]
             }
           }
         />
@@ -48,7 +58,12 @@ const AnimalsList = observer((props: IAnimalListProps) => {
             <Text style={styles.name_text}>{animal.name}</Text>
             <Text style={styles.description_text}>{animal.type}</Text>
           </View>
-          <Text style={styles.age_text}>{animal.age}</Text>
+          <Text style={styles.age_text}>{animal.age} {checkAge(animal.age)}</Text>
+          {animal.sex === 1?
+              <Text style={styles.sex_text}>девочка</Text>:
+              <Text style={styles.sex_text}>мальчик</Text>
+          }
+
           <View style={styles.info_line}>
             <View style={styles.location}>
               <LocationSVG/>
@@ -124,14 +139,23 @@ const styles = StyleSheet.create({
     lineHeight: 19,
     color: '#000',
   },
+  sex_text: {
+    fontFamily: 'Inter',
+    fontStyle: 'normal',
+    fontWeight: '400',
+    fontSize: 12,
+    lineHeight: 15,
+    color: '#EE7100',
+    marginBottom: 25,
+  },
   age_text: {
     fontFamily: 'Inter',
     fontStyle: 'normal',
     fontWeight: '400',
     fontSize: 12,
     lineHeight: 15,
-    color: '#7C7C7C',
-    marginBottom: 40,
+    color: '#EE7100',
+
   },
   location_text: {
     fontFamily: 'Inter',

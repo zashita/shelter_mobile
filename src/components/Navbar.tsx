@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, StyleSheet, View} from 'react-native';
+import {Dimensions, Image, StyleSheet, View} from 'react-native';
 import HomeSVG from '../assets/img/HomeInactive.svg';
 import InfoSVG from '../assets/img/InfoInactive.svg'
 import GiftSVG from '../assets/img/GiftInactive.svg'
@@ -11,25 +11,31 @@ import LikeActiveSVG from '../assets/img/LikeActive.svg'
 import {Button} from "react-native-paper";
 import {observer} from "mobx-react-lite";
 import Navigation from "../store/Navigation";
+import search from "../store/Search";
 
 export interface NavbarProps{
     navigation: any;
 }
+
+const HEIGHT = Dimensions.get('screen').height;
 
 const Navbar:React.FC<NavbarProps> = observer(({navigation}) => {
 
     const goHome = () =>{
         Navigation.setCurrentScreen('Home')
         navigation.navigate('Main');
+
     }
 
     const goInfo = () =>{
         Navigation.setCurrentScreen('Info')
         navigation.navigate('News')
+
     }
     const goGifts = () =>{
         Navigation.setCurrentScreen('Gift')
         navigation.navigate('Gifts')
+
     }
 
     const goLiked = () =>{
@@ -77,12 +83,12 @@ const style = StyleSheet.create({
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    bottom: 0,
     position: 'absolute',
     borderRadius: 10,
     backgroundColor: '#fff',
     borderBottomColor: '#EE7100',
-    borderBottomWidth: 3
+    borderBottomWidth: 3,
+    bottom: 0
 },
 icons_container: {
     display: 'flex',

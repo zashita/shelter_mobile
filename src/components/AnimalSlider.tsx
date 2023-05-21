@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
 import {Dimensions, Image, SafeAreaView, ScrollView, StyleSheet, Text, View} from "react-native";
-import url from "../url";
+import server from "../server";
 import animals from "../store/Animals";
 import {observer} from "mobx-react-lite";
+import Close from "../assets/img/icons8-cancel.svg"
+import {Button} from "react-native-paper";
 
 export interface AnimalSliderProps{
     sliderActive: boolean;
@@ -32,10 +34,13 @@ const AnimalSlider:React.FC<AnimalSliderProps> = observer(({sliderActive, setSli
             style = {styles.container}
             onTouchEnd={() => setSliderActive(false)}
         >
+
             <View
                 style={styles.wrap}
                 onTouchEnd={e => e.stopPropagation()}
             >
+                <Button style={styles.close} icon={Close} onPress={() => setSliderActive(false)}>
+                </Button>
                 <ScrollView
                  onScroll={({nativeEvent})=> onChange(nativeEvent)}
                  showsHorizontalScrollIndicator={false}
@@ -52,7 +57,7 @@ const AnimalSlider:React.FC<AnimalSliderProps> = observer(({sliderActive, setSli
                                 style={styles.image}
                                 source={
                                     {
-                                        uri: url.image + image
+                                        uri: server.image + image
                                     }
                                 }
                                 />
@@ -98,7 +103,7 @@ const styles = StyleSheet.create({
         width: WIDTH - 20,
         height: HEIGHT* 0.33,
         alignSelf: "center",
-        marginTop: HEIGHT * 0.25,
+
         borderRadius: 20
     },
     wrapDot:{
@@ -118,6 +123,10 @@ const styles = StyleSheet.create({
         fontSize: 7,
         marginTop: 3,
         marginRight: 3,
+    },
+    close:{
+        marginTop: HEIGHT * 0.25,
+        alignSelf: "center"
     }
 
 })

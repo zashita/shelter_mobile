@@ -7,6 +7,7 @@ import {INewsItem} from "../types/NewsItem";
 import animals from "../store/Animals";
 import search from "../store/Search";
 import {observer} from "mobx-react-lite";
+import server from "../server";
 
 
 export interface NewsListProps{
@@ -20,7 +21,7 @@ const NewsList:React.FC<NewsListProps> = observer(({navigation}) => {
     }
 
     const filteredNews = News.news.filter(newsItem => {
-        return search.searchString !== undefined?newsItem.text.toLowerCase().includes(search.searchString.toLowerCase()): newsItem
+        return search.searchString !== undefined?newsItem.description.toLowerCase().includes(search.searchString.toLowerCase()): newsItem
     })
 
     const NewsViewList = [...filteredNews].map((newsItem)=>{
@@ -31,11 +32,11 @@ const NewsList:React.FC<NewsListProps> = observer(({navigation}) => {
                 style= {style.card}
                 contentStyle={style.content}
                 onPress={() => OpenNewsItem(newsItem)}>
-                <Card.Cover source={NewsExample} style={style.cover}/>
+                <Card.Cover source={{uri: server.image + newsItem.photo}} style={style.cover}/>
                 <Card.Content>
-                    <Text style={style.date}>{newsItem.date}</Text>
-                    <Text style={style.title}>{newsItem.title}</Text>
-                    <Text style={style.text}>{newsItem.text}</Text>
+                    <Text style={style.date}>{newsItem.created_at}</Text>
+                    <Text style={style.title}>{newsItem.label}</Text>
+                    <Text style={style.text}>{newsItem.description}</Text>
                 </Card.Content>
 
             </Card>
@@ -61,6 +62,7 @@ const style = StyleSheet.create({
         boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.25)',
         borderRadius: 10,
         marginBottom: 20,
+        maxHeight: 220
     },
     cover: {
         width: 170,
@@ -75,6 +77,7 @@ const style = StyleSheet.create({
         color: '#000000',
         width: 140,
         marginBottom: 20,
+        maxHeight: 60
     },
     text: {
         fontFamily: 'Inter',

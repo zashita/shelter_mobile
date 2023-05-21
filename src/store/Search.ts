@@ -13,6 +13,10 @@ class Search{
         this.searchString = newString
     }
 
+    clearSearchString(){
+        this.searchString = ''
+    }
+
 
 }
 

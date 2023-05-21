@@ -1,6 +1,7 @@
 export interface INewsItem {
-    id: string;
-    title: string;
-    text: string;
-    date: string;
+    id: number;
+    label: string;
+    description: string;
+    photo: string,
+    created_at: string;
 }

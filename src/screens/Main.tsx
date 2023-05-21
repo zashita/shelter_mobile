@@ -27,7 +27,8 @@ const Main:React.FC<IAnimalsProps> = observer(({navigation}) => {
       animals.setAnimals().
       then(promise => liked.setLiked().
       then(promise => setLoading(false)))
-  }, [animals.url])
+  }, [])
+
  const searchedAnimals = animals.animals.filter(animal => {
      return search.searchString !== undefined?animal.name.toLowerCase().includes(search.searchString.toLowerCase()): animal
  })

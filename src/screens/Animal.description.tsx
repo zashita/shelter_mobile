@@ -2,20 +2,23 @@ import React, {useState} from "react";
 import {Image, SafeAreaView, StyleSheet, Text, View} from "react-native";
 import {Button} from "react-native-paper";
 import animals from '../store/Animals';
-import ShareSVG from  '../assets/img/shareIcon.svg'
+import ShareSVG from  '../assets/img/Vector 2.svg'
 import LikeSVG from '../assets/img/LikeScreen.svg';
 import LikeActiveSVG from '../assets/img/LikeDescActive.svg'
 import {YaMap, Marker, Circle} from 'react-native-yamap';
 import AnimalSlider from "../components/AnimalSlider";
-import url from "../url";
+import server from "../server";
 import liked from "../store/Liked";
 import {observer} from "mobx-react-lite";
 import OtherInfo from "../components/OtherInfo";
 
 const API_KEY = '08eba25e-17db-40ea-9de8-397c8d2f4e34'
 YaMap.init(API_KEY);
+export interface AnimalDescProps{
+  navigation: any
+}
 
-const AnimalDescription = observer(() => {
+const AnimalDescription:React.FC<AnimalDescProps> = observer(({navigation}) => {
 
   const [SliderActive, setSliderActive] = useState(false)
   const Liked = (id: number) => {
@@ -33,7 +36,11 @@ const AnimalDescription = observer(() => {
 
       </View>
     <View style={style.top_container}>
-      <Button icon={ShareSVG} mode="contained" buttonColor={"transparent"} style={style.button}>
+      <Button icon={ShareSVG}
+              mode="contained"
+              buttonColor={"transparent"}
+              style={style.button}
+              onPress={() =>{navigation.goBack()}}>
 
       </Button>
       <View
@@ -41,7 +48,7 @@ const AnimalDescription = observer(() => {
       <Image
         style={style.animal_image}
         source={{
-          uri: url.image + animals.currentAnimal.photos[0]
+          uri: server.image + animals.currentAnimal.photos[0]
         }}
       />
       </View>
@@ -83,7 +90,7 @@ const AnimalDescription = observer(() => {
 
         <View style = {style.main_info_container}>
           <Text style={style.main_info_text_field}>
-            Адрес
+            Приют
           </Text>
           <Text style={style.main_info_text}>
           {
@@ -97,7 +104,17 @@ const AnimalDescription = observer(() => {
             Номер телефона
           </Text>
           <Text style={style.main_info_text}>
-            +375439629465
+            {animals.currentAnimal.phone}
+          </Text>
+        </View>
+        <View style = {style.main_info_container}>
+          <Text style={style.main_info_text_field}>
+            Адрес
+          </Text>
+          <Text style={style.main_info_text}>
+            {
+              animals.currentAnimal.address
+            }
           </Text>
         </View>
 
@@ -112,7 +129,7 @@ const AnimalDescription = observer(() => {
               zoom: 7,
               azimuth: 0,
             }}
-          style = {{width: '100%', height: 300, borderRadius: 10, borderWidth: 3, borderStyle: 'solid', borderColor: '#000'}}
+          style = {{width: '100%', height: 300, borderRadius: 10, borderWidth: 1, borderStyle: 'solid', borderColor: '#000', maxHeight: 250}}
         >
           <Marker
               point={{ lat: 30, lon: 30 }}
@@ -171,7 +188,7 @@ const style = StyleSheet.create({
   global_container_active: {
     backgroundColor: 'white',
     height: '100%',
-    opacity: 0.2,
+    opacity: 0.05,
   },
   // bottom_container: {
   //   padding: 20,

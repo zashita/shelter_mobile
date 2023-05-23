@@ -8,7 +8,6 @@ import Navbar from "../components/Navbar";
 import FilterSVG from '../assets/img/FiltrIconWhite.svg'
 import {Button, ProgressBar, ToggleButton} from "react-native-paper";
 import {Text} from 'react-native-paper'
-import {TextField} from "@mui/material";
 import style from '../styles/filters.scss'
 import animals from "../store/Animals";
 import server from "../server";

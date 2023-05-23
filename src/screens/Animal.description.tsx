@@ -11,6 +11,7 @@ import server from "../server";
 import liked from "../store/Liked";
 import {observer} from "mobx-react-lite";
 import OtherInfo from "../components/OtherInfo";
+import Map from "../components/Map";
 
 const API_KEY = '08eba25e-17db-40ea-9de8-397c8d2f4e34'
 YaMap.init(API_KEY);
@@ -118,23 +119,7 @@ const AnimalDescription:React.FC<AnimalDescProps> = observer(({navigation}) => {
           </Text>
         </View>
 
-        <YaMap
-            showUserPosition={false}
-            rotateGesturesEnabled={false}
-            nightMode={false}
-            mapType={'vector'}
-            initialRegion={{
-              lat: 30,
-              lon: 30,
-              zoom: 7,
-              azimuth: 0,
-            }}
-          style = {{width: '100%', height: 300, borderRadius: 10, borderWidth: 1, borderStyle: 'solid', borderColor: '#000', maxHeight: 250}}
-        >
-          <Marker
-              point={{ lat: 30, lon: 30 }}
-          />
-        </YaMap>
+        <Map/>
 
 
 

@@ -11,14 +11,15 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import SearchBlock from './components/Search';
 import Profile from './screens/Profile';
-import LogIn from "./screens/LogIn";
 import AppNavigation from "./app.navigation";
 import {Provider as PaperProvider} from "react-native-paper"
 import {GestureHandlerRootView} from "react-native-gesture-handler";
+import {YaMap} from "react-native-yamap";
 
 
 
 function App() {
+
   return (
 
     <PaperProvider>

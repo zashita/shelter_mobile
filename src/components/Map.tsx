@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { StyleSheet, View } from 'react-native';
-import {Marker, YaMap} from "react-native-yamap";
+import {Circle, Marker, YaMap} from "react-native-yamap";
 import FilterSVG from "../assets/img/FiltrIconWhite.svg";
 import {Button, Text} from "react-native-paper";
 import Wrapper from "./Wrapper";
@@ -26,19 +26,11 @@ interface Point {
 const Map = () => {
     const [geo, setGeo] = useState({lat: 0, lon: 0})
     const [loading, setLoading] = useState(true)
-    // useEffect(()=>{
-    //     const response = fetch('https://geocode-maps.yandex.ru/1.x/?apikey=ваш API-ключ&geocode=Москва,+Тверская+улица,+дом+7')
-    //
-    //     .then(promise =>{
-    //         // @ts-ignore
-    //         setGeo(promise.json)
-    //         setLoading(false)
-    //     }).catch(error => {
-    //         // Handle the rejected Promise
-    //         console.error(error);
-    //         // Additional error handling logic
-    //     })
-    // })
+    useEffect(()=>{
+        animals.setGeoCode(`Минск, ${animals.currentAnimal.address}`).then(promise => {
+            setLoading(false)
+        })
+    }, [])
 
 
 
@@ -48,13 +40,27 @@ return(
         {
             loading? <View></View>:
                 <YaMap
-                    initialRegion={geo}
+                    initialRegion={{
+                        lat: animals.lat,
+                        lon: animals.lon,
+                        zoom: 16.3
+                    }}
                     showUserPosition={true}
                     rotateGesturesEnabled={false}
                     nightMode={false}
                     style = {{width: '100%', height: 300, borderRadius: 10, borderWidth: 1, borderStyle: 'solid', borderColor: '#000', maxHeight: 250}}
                 >
-                    <Marker point={geo}/>
+                    <Circle
+                        center={{lat: animals.lat, lon: animals.lon}}
+                        radius={15}
+                        fillColor={'#FF0000'}
+                        strokeColor={'#FF0000'}
+                        strokeWidth={4}
+                        zIndex={5000}
+                    />
+
+
+
                 </YaMap>
         }
 

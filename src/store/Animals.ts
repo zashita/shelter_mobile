@@ -1,10 +1,14 @@
 import {IAnimal} from "../types/Animal";
 import {action, makeAutoObservable, runInAction} from "mobx";
 import server from '../server'
+import {Geocoder} from "react-native-yamap";
 
-
+const GEO_KEY = 'c3214d53-f6bf-41d6-9155-9e71c9a69ce6'
+Geocoder.init(GEO_KEY)
 class Animals {
     animals: IAnimal[] = [];
+    lat: number = 0;
+    lon: number = 0;
     currentAnimal: IAnimal = { id:1,
         age:12,
         name: "Василиса",
@@ -35,6 +39,15 @@ class Animals {
 
     setCurrentAnimal(animal: IAnimal) {
         this.currentAnimal = animal;
+    }
+
+    async setGeoCode(adress: string){
+        this.lat = await Geocoder.addressToGeo(adress).then(promise =>{
+            return promise?.lat
+        });
+        this.lon = await Geocoder.addressToGeo(adress).then(promise =>{
+            return promise?.lon
+        })
     }
 }
 export default new Animals();

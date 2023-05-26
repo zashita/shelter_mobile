@@ -23,15 +23,7 @@ const OtherInfo = observer(() => {
                 'Стерилизована'
         )
     }
-    if (animals.currentAnimal.on_happiness)
-    {
-        info.push('on_happiness')
-    }
-    if (animals.currentAnimal.on_rainbow)
-    {
-        info.push('on_rainbow')
 
-    }
     return (
         <View style={info.length < 3?style.block2: style.block4}>
             {

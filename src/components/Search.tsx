@@ -3,10 +3,9 @@ import {Alert, Image, NativeEventEmitter, StyleSheet, TextInput, View} from 'rea
 import FiltrSVG from '../assets/img/FiltrIcon.svg';
 import SearchSVG from '../assets/img/icons8-search.svg';
 import {Button} from "react-native-paper";
-import Navigation from "../store/Navigation"
 import {observer} from "mobx-react-lite";
 import search from "../store/Search";
-import {useRoute} from "@react-navigation/native";
+import {useRoute, useTheme} from "@react-navigation/native";
 
 export interface ISearchProps{
     navigation: any;
@@ -19,6 +18,44 @@ const Search = observer((props: ISearchProps) => {
     const openFilters = () =>{
         props.navigation.navigate('Filters')
     }
+
+    const {colors} = useTheme();
+
+    const styles = StyleSheet.create({
+        searchBlock: {
+            width: '100%',
+            display: 'flex',
+            backgroundColor: colors.card,
+            borderRadius: 30,
+            flexDirection: 'row',
+            height: 45,
+            marginBottom: 31,
+            alignItems: 'center',
+        },
+        filtrBlock:{
+            width: 35,
+            height: 35,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+        },
+        input: {
+            flex: 1,
+            backgroundColor: colors.card,
+            fontSize: 15,
+            fontWeight: '400',
+            textAlign: 'left',
+            color: colors.border,
+        },
+        searchImage: {
+            width: 35,
+            height: 35,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+        },
+    });
+
   return (
     <View style={styles.searchBlock}>
         <View style={styles.searchImage}>
@@ -36,7 +73,7 @@ const Search = observer((props: ISearchProps) => {
         <View style={styles.filtrBlock}>
             {
                 route.name === "Main"?
-                        <Button icon={FiltrSVG} onPress={openFilters}>
+                        <Button icon={FiltrSVG} onPress={openFilters} compact={true}>
 
                         </Button>
                     :
@@ -52,37 +89,4 @@ const Search = observer((props: ISearchProps) => {
 
 export default Search;
 
-const styles = StyleSheet.create({
-    searchBlock: {
-        width: '100%',
-        display: 'flex',
-        backgroundColor: '#fff',
-        borderRadius: 30,
-        flexDirection: 'row',
-        height: 45,
-        marginBottom: 31,
-        alignItems: 'center',
-    },
-    filtrBlock:{
-        width: 35,
-        height: 35,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    input: {
-        flex: 1,
-        backgroundColor: '#fff',
-        fontSize: 15,
-        fontWeight: '400',
-        textAlign: 'left',
-        color: '#C1C1C1',
-    },
-    searchImage: {
-        width: 35,
-        height: 35,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
+

@@ -14,6 +14,7 @@ import AnimalsList from "../components/AnimalsList";
 import search from "../store/Search";
 import liked from "../store/Liked";
 import filtration from "../store/Filtration";
+import {useTheme} from "@react-navigation/native";
 
 export interface IAnimalsProps{
   navigation: any;
@@ -30,7 +31,9 @@ const Main:React.FC<IAnimalsProps> = observer(({navigation}) => {
   }, [])
 
  const searchedAnimals = animals.animals.filter(animal => {
-     return search.searchString !== undefined?animal.name.toLowerCase().includes(search.searchString.toLowerCase()): animal
+     return search.searchString !== undefined?animal.shelter.toLowerCase().includes(search.searchString.toLowerCase()) ||
+         animal.address.toLowerCase().includes(search.searchString.toLowerCase()) ||
+         animal.name.toLowerCase().includes(search.searchString.toLowerCase()): animal
  })
 
     const filteredAnimalsTypes = searchedAnimals.filter(animal => {
@@ -56,11 +59,13 @@ const Main:React.FC<IAnimalsProps> = observer(({navigation}) => {
     const filteredAnimals = filteredAnimalsBySter.filter((animal)=>{
         return filtration.vaccinated? animal.vaccinated: animal
     })
+
+    const {colors} = useTheme()
   return (
 
     <MainLayout navigation={navigation}>
       {loading?
-          <ActivityIndicator size={"large"} color={'#FF9D01'}/>
+          <ActivityIndicator size={"large"} color={colors.primary}/>
       :
           <AnimalsList
               navigation={navigation}

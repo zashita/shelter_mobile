@@ -119,9 +119,9 @@ android {
         }
         release {
               storeFile file('your_key_name.keystore')
-              storePassword 'changeit'
+              storePassword 'password'
               keyAlias 'your_key_alias'
-              keyPassword 'changeit'
+              keyPassword 'password'
             }
     }
     buildTypes {

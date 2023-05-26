@@ -8,6 +8,7 @@ import news from '../store/News'
 import {ActivityIndicator} from "react-native-paper";
 import animals from "../store/Animals";
 import AnimalsList from "../components/AnimalsList";
+import {useTheme} from "@react-navigation/native";
 interface InfoProps{
     navigation: any;
 }
@@ -18,13 +19,15 @@ const News: React.FC<InfoProps> = observer(({navigation}) => {
             news.setNews().
             then(promise => setLoading(false))
         }, [])
+
+    const {colors} = useTheme()
     return (
         <>
             <MainLayout navigation={navigation}>
                 {loading?
                     <ActivityIndicator
                         size={"large"}
-                        color={'#FF9D01'}/>
+                        color={colors.primary}/>
                     :
                     <NewsList
                         navigation={navigation}/>

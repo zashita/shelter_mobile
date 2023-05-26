@@ -11,6 +11,7 @@ import OtherFilters from "./OtherFilters";
 import {IFiltersProps} from "../screens/Filters";
 import { Geocoder } from 'react-native-yamap';
 import animals from "../store/Animals";
+import {useTheme} from "@react-navigation/native";
 
 const API_KEY = '86c3d98a-7c00-42a5-87a1-c3e9997cc908'
 const GEO_KEY = 'c3214d53-f6bf-41d6-9155-9e71c9a69ce6'
@@ -32,7 +33,7 @@ const Map = () => {
         })
     }, [])
 
-
+    const theme = useTheme();
 
 return(
 
@@ -47,7 +48,7 @@ return(
                     }}
                     showUserPosition={true}
                     rotateGesturesEnabled={false}
-                    nightMode={false}
+                    nightMode={theme.dark}
                     style = {{width: '100%', height: 300, borderRadius: 10, borderWidth: 1, borderStyle: 'solid', borderColor: '#000', maxHeight: 250}}
                 >
                     <Circle

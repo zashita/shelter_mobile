@@ -10,7 +10,7 @@ import AnimalsArr from "../store/Animals";
 import Navbar from "../components/Navbar";
 import GiftWhiteSVG from '../assets/img/GiftWhite.svg';
 import LikeWhiteSVG from '../assets/img/LikeWhite.svg';
-import {useRoute} from "@react-navigation/native";
+import {useRoute, useTheme} from "@react-navigation/native";
 
 const HEIGHT = Dimensions.get('screen').height
 
@@ -21,6 +21,56 @@ export interface MainLayoutProps{
 
 const MainLayout:React.FC<MainLayoutProps> = ({navigation, children}) => {
     const route = useRoute();
+
+    const {colors} = useTheme();
+
+    const styles = StyleSheet.create({
+        background:{
+            backgroundColor: colors.primary,
+            flex: 1
+
+        },
+        location_block:{
+            marginLeft: 'auto',
+            marginRight: `auto`,
+            top: 50,
+            display: `flex`,
+            flexDirection: "row",
+            marginBottom: 75,
+            alignItems: `center`,
+            height: 30
+
+        },
+        location_text:{
+
+        },
+        location_image:{
+            marginRight: 10,
+        },
+        main_block: {
+            flex: 1,
+            backgroundColor: colors.background,
+            borderRadius: 40,
+        },
+
+        choise_img:{
+            // width: 48,
+            // height:48,
+        },
+        categories_container:{
+            display: "flex",
+            flexDirection: "row",
+            columnGap: 22,
+        },
+        linearGradient: {
+            borderRadius: 40,
+        }
+
+
+
+    })
+
+
     return (
         <View style={styles.background}>
             <View style={styles.location_block}>
@@ -77,48 +127,4 @@ const MainLayout:React.FC<MainLayoutProps> = ({navigation, children}) => {
 
 export default MainLayout;
 
-const styles = StyleSheet.create({
-    background:{
-        backgroundColor: `#FF9D01`,
-        flex: 1
 
-    },
-    location_block:{
-        marginLeft: 'auto',
-        marginRight: `auto`,
-        top: 50,
-        display: `flex`,
-        flexDirection: "row",
-        marginBottom: 75,
-        alignItems: `center`,
-        height: 30
-
-    },
-    location_text:{
-
-    },
-    location_image:{
-        marginRight: 10,
-    },
-    main_block: {
-        flex: 1,
-        backgroundColor: `#F4F4F4`,
-        borderRadius: 40,
-    },
-
-    choise_img:{
-        // width: 48,
-        // height:48,
-    },
-    categories_container:{
-        display: "flex",
-        flexDirection: "row",
-        columnGap: 22,
-    },
-    linearGradient: {
-        borderRadius: 40,
-    }
-
-
-
-})

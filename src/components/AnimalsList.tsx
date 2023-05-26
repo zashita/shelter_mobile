@@ -8,6 +8,7 @@ import {IAnimal} from "../types/Animal";
 import {observer} from "mobx-react-lite";
 import liked from "../store/Liked";
 import server from "../server";
+import {useTheme} from "@react-navigation/native";
 
 export interface IAnimalListProps {
   animals: IAnimal[];
@@ -40,7 +41,112 @@ const AnimalsList = observer((props: IAnimalListProps) => {
       return 'лет'
     }
   }
+
+  const {colors} = useTheme();
+  const styles = StyleSheet.create({
+    card: {
+      flex: 1,
+      height: 200,
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+      backgroundColor: colors.card,
+      boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.25)',
+      borderRadius: 10,
+      marginBottom: 25,
+      paddingRight: 12,
+    },
+    info_container: {
+      // width: 169,
+      // height: '100%',
+      flex: 1,
+      backgroundColor: colors.card,
+      paddingTop: 42,
+
+      paddingBottom: 12,
+      paddingLeft: 12,
+    },
+    info_line: {
+      flex: 1,
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
+    location: {
+      flex: 1,
+      display: 'flex',
+      flexDirection: 'row',
+      columnGap: 10,
+      alignItems: 'center',
+      height: 30,
+    },
+    text: {
+      color: 'black',
+    },
+    animal_img: {
+      borderRadius: 7,
+      width: 171,
+      height: 190,
+      marginLeft: 5,
+    },
+    name_text: {
+      fontFamily: 'Inter',
+      fontStyle: 'normal',
+      fontWeight: '600',
+      fontSize: 16,
+      lineHeight: 19,
+      color: colors.text,
+    },
+    sex_text: {
+      fontFamily: 'Inter',
+      fontStyle: 'normal',
+      fontWeight: '400',
+      fontSize: 12,
+      lineHeight: 15,
+      color: colors.primary,
+      marginBottom: 25,
+    },
+    age_text: {
+      fontFamily: 'Inter',
+      fontStyle: 'normal',
+      fontWeight: '400',
+      fontSize: 12,
+      lineHeight: 15,
+      color: colors.primary,
+
+    },
+    location_text: {
+      fontFamily: 'Inter',
+      fontStyle: 'normal',
+      fontWeight: '400',
+      fontSize: 12,
+      lineHeight: 15,
+      color: colors.border,
+    },
+    description_text: {
+      fontFamily: 'Inter',
+      fontStyle: 'normal',
+      fontWeight: '400',
+      fontSize: 12,
+      lineHeight: 15,
+      color: colors.border,
+    },
+    like_img: {
+      position: "relative",
+    },
+    like_container:{
+      flex: 1,
+      marginTop: 10,
+      alignItems: "flex-end"
+    }
+  });
+
+
   const AnimalsViewList = [...props.animals].map(animal => {
+
+
+
     return (
       <View style={styles.card} key = {animal.id}>
         <View onTouchEnd={() => CardOpen(animal)}>
@@ -87,101 +193,4 @@ const AnimalsList = observer((props: IAnimalListProps) => {
 
 export default AnimalsList;
 
-const styles = StyleSheet.create({
-  card: {
-    flex: 1,
-    height: 200,
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#FFFFFF',
-    boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.25)',
-    borderRadius: 10,
-    marginBottom: 25,
-    paddingRight: 12,
-  },
-  info_container: {
-    // width: 169,
-    // height: '100%',
-    flex: 1,
-    backgroundColor: '#FFFFFF',
-    paddingTop: 42,
 
-    paddingBottom: 12,
-    paddingLeft: 12,
-  },
-  info_line: {
-    flex: 1,
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  location: {
-    flex: 1,
-    display: 'flex',
-    flexDirection: 'row',
-    columnGap: 10,
-    alignItems: 'center',
-    height: 30,
-  },
-  text: {
-    color: 'black',
-  },
-  animal_img: {
-    borderRadius: 7,
-    width: 171,
-    height: 190,
-    marginLeft: 5,
-  },
-  name_text: {
-    fontFamily: 'Inter',
-    fontStyle: 'normal',
-    fontWeight: '600',
-    fontSize: 16,
-    lineHeight: 19,
-    color: '#000',
-  },
-  sex_text: {
-    fontFamily: 'Inter',
-    fontStyle: 'normal',
-    fontWeight: '400',
-    fontSize: 12,
-    lineHeight: 15,
-    color: '#EE7100',
-    marginBottom: 25,
-  },
-  age_text: {
-    fontFamily: 'Inter',
-    fontStyle: 'normal',
-    fontWeight: '400',
-    fontSize: 12,
-    lineHeight: 15,
-    color: '#EE7100',
-
-  },
-  location_text: {
-    fontFamily: 'Inter',
-    fontStyle: 'normal',
-    fontWeight: '400',
-    fontSize: 12,
-    lineHeight: 15,
-    color: '#888888',
-  },
-  description_text: {
-    fontFamily: 'Inter',
-    fontStyle: 'normal',
-    fontWeight: '400',
-    fontSize: 12,
-    lineHeight: 15,
-    color: '#7C7C7C',
-  },
-  like_img: {
-    position: "relative",
-  },
-  like_container:{
-    flex: 1,
-    marginTop: 10,
-    alignItems: "flex-end"
-  }
-});

@@ -4,6 +4,7 @@ import { ProgressBar } from "react-native-paper";
 import RangeSlider from "./RangeSlider";
 import filters from '../store/Filtration'
 import {observer} from "mobx-react-lite";
+import {useTheme} from "@react-navigation/native";
 
 
 const AgeFilters = observer(() => {
@@ -27,6 +28,19 @@ const AgeFilters = observer(() => {
             filters.setMaxAge(e.target.value)
 
     }
+    const {colors} = useTheme();
+
+    const style = StyleSheet.create({
+        age_input: {
+            width: '47%',
+            backgroundColor: '#fff',
+            borderRadius: 20,
+            paddingLeft: 20,
+            paddingRight: 20,
+            color: '#888888',
+        },
+    });
+
   return (
     <>
       <View
@@ -57,13 +71,13 @@ const AgeFilters = observer(() => {
 })
 
 export default AgeFilters;
-const style = StyleSheet.create({
-    age_input: {
-        width: '47%',
-        backgroundColor: '#fff',
-        borderRadius: 20,
-        paddingLeft: 20,
-        paddingRight: 20,
-        color: '#888888',
-    },
-});
+// const style = StyleSheet.create({
+//     age_input: {
+//         width: '47%',
+//         backgroundColor: '#fff',
+//         borderRadius: 20,
+//         paddingLeft: 20,
+//         paddingRight: 20,
+//         color: '#888888',
+//     },
+// });

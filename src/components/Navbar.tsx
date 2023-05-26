@@ -10,9 +10,8 @@ import GiftActiveSVG from '../assets/img/GiftActive.svg'
 import LikeActiveSVG from '../assets/img/LikeActive.svg'
 import {Button} from "react-native-paper";
 import {observer} from "mobx-react-lite";
-import Navigation from "../store/Navigation";
 import search from "../store/Search";
-import {useRoute} from "@react-navigation/native";
+import {useRoute, useTheme} from "@react-navigation/native";
 
 export interface NavbarProps{
     navigation: any;
@@ -42,9 +41,33 @@ const Navbar:React.FC<NavbarProps> = observer(({navigation}) => {
         navigation.navigate('Liked')
     }
 
+    const {colors} = useTheme();
+
+    const style = StyleSheet.create({
+        bar: {
+            flex: 1,
+            // width: Dimensions.get('window').width,
+            maxHeight: 50,
+            justifyContent: 'center',
+            alignItems: 'center',
+            // position: 'absolute',
+            borderRadius: 10,
+            backgroundColor: colors.card,
+            borderBottomColor: colors.primary,
+            borderBottomWidth: 3,
+            bottom: 0,
+            paddingHorizontal: 36
+        },
+        icons_container: {
+            display: 'flex',
+            flexDirection: 'row',
+            columnGap: 35,
+            flex: 1
+        }
+    })
 
 
-  return (
+    return (
     <View style={style.bar}>
       <View style={style.icons_container}>
           <Button icon={
@@ -76,25 +99,3 @@ const Navbar:React.FC<NavbarProps> = observer(({navigation}) => {
 
 export default Navbar;
 
-const style = StyleSheet.create({
-    bar: {
-    flex: 1,
-    // width: Dimensions.get('window').width,
-    maxHeight: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-    // position: 'absolute',
-    borderRadius: 10,
-    backgroundColor: '#fff',
-    borderBottomColor: '#EE7100',
-    borderBottomWidth: 3,
-    bottom: 0,
-    paddingHorizontal: 36
-},
-icons_container: {
-    display: 'flex',
-    flexDirection: 'row',
-    columnGap: 35,
-    flex: 1
-}
-})

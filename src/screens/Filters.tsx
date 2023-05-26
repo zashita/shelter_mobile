@@ -19,6 +19,7 @@ import AgeFilters from "../components/AgeFilters";
 import {GestureHandlerRootView} from "react-native-gesture-handler";
 import FilterLayout from "../Layouts/FilterLayout";
 import ResetSVG from "../assets/img/reset_icon_246246.svg"
+import {useTheme} from "@react-navigation/native";
 
 
 export interface IFiltersProps{
@@ -27,19 +28,17 @@ export interface IFiltersProps{
 }
 
 const Filters = (props: IFiltersProps) => {
-    const [status, setStatus]: any = React.useState('unchecked');
+
 
     const setOptions = () =>{
         props.navigation.goBack();
     }
 
-    const clearOptions = () =>{
-        filters.clearFilters().then(props.navigation.goBack())
-    }
 
-    const onButtonToggle = () => {
-        setStatus(status === 'checked' ? 'unchecked' : 'checked');
-    };
+
+
+    const {colors} = useTheme()
+
     return (
         <FilterLayout navigation={props.navigation}>
             <Text style={{color: 'gray', marginBottom: 10}}>Я хочу приютить</Text>
@@ -60,22 +59,14 @@ const Filters = (props: IFiltersProps) => {
             <OtherFilters/>
             <View style = {style.buttonContainer}>
                 <Button
-                    buttonColor={'#FF9D01'}
+                    buttonColor={colors.primary}
                     mode ={"contained"}
-                    textColor={'#000'}
+                    textColor={colors.text}
                     style={style.buttonSet}
                     onPress={setOptions}>
                     Применить
                 </Button>
-                <Button
-                    buttonColor={'#D9D9D9'}
-                    mode ={"contained"}
-                    textColor={'#000'}
-                    style={style.buttonClear}
-                    onPress={clearOptions}
-                    icon={ResetSVG}>
 
-                </Button>
             </View>
 
         </FilterLayout>
@@ -91,9 +82,10 @@ const style = StyleSheet.create({
 
     },
     buttonClear:{
-        width: '10%',
+        width: '13%',
         alignSelf: "center",
-        marginBottom: 20
+        marginBottom: 20,
+        paddingLeft: 7
     },
 
     buttonContainer:{

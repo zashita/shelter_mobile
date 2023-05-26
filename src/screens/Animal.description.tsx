@@ -12,6 +12,7 @@ import liked from "../store/Liked";
 import {observer} from "mobx-react-lite";
 import OtherInfo from "../components/OtherInfo";
 import Map from "../components/Map";
+import {useTheme} from "@react-navigation/native";
 
 const API_KEY = '08eba25e-17db-40ea-9de8-397c8d2f4e34'
 YaMap.init(API_KEY);
@@ -29,6 +30,94 @@ const AnimalDescription:React.FC<AnimalDescProps> = observer(({navigation}) => {
       liked.setLikedId(id)
     }
   }
+
+  const {colors} = useTheme()
+
+  const style = StyleSheet.create({
+    button: {
+      height: 30,
+      width: 30,
+      // alignSelf: 'center',
+    },
+    top_container: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      backgroundColor: colors.card,
+      paddingTop: 30,
+      paddingLeft: 10,
+    },
+    animal_image: {
+      width: 160,
+      height: 160,
+      borderRadius: 228,
+      alignSelf: 'center',
+      marginTop: 30,
+    },
+    bottom_container: {
+      width: '90%',
+      borderRadius: 20,
+      marginTop: 20,
+      height: 600,
+      alignSelf: 'center',
+    },
+    global_container: {
+      backgroundColor: 'white',
+      height: '100%',
+    },
+    global_container_active: {
+      backgroundColor: 'white',
+      height: '100%',
+      opacity: 0.05,
+    },
+    // bottom_container: {
+    //   padding: 20,
+    // },
+    name_text: {
+      color: colors.text,
+      fontSize: 24,
+      marginBottom: 20,
+      alignSelf: 'center',
+    },
+    other_info_container: {
+      background: colors.border,
+      borderRadius: 8,
+      width: '100%',
+      padding: 15,
+      marginBottom: 15,
+    },
+    other_info_text: {
+      background: '#FFD5B0',
+      borderRadius: 10,
+      color: 'black',
+      paddingVertical: 6,
+      paddingHorizontal: 14,
+      fontSize: 14,
+    },
+    main_info_text: {
+      color: colors.border,
+      fontSize: 16,
+      marginBottom: 15,
+    },
+    main_info_text_field: {
+      color: colors.text,
+      fontSize: 16,
+      marginBottom: 15,
+    },
+    main_info_container: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      width: '100%',
+    },
+    additional_info_text: {
+      color: colors.text,
+      fontSize: 15,
+      marginBottom: 20,
+    },
+  });
+
 
   return (
       <>
@@ -135,95 +224,4 @@ const AnimalDescription:React.FC<AnimalDescProps> = observer(({navigation}) => {
 
 export default AnimalDescription;
 
-const style = StyleSheet.create({
-  button: {
-    height: 30,
-    width: 30,
-    // alignSelf: 'center',
-  },
-  top_container: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    backgroundColor: '#ffffff',
-    paddingTop: 30,
-    paddingLeft: 10,
-  },
-  animal_image: {
-    width: 160,
-    height: 160,
-    borderRadius: 228,
-    alignSelf: 'center',
-    marginTop: 30,
-  },
-  bottom_container: {
-    width: '90%',
-    borderRadius: 20,
-    marginTop: 20,
-    height: 600,
-    alignSelf: 'center',
-  },
-  global_container: {
-    backgroundColor: 'white',
-    height: '100%',
-  },
-  global_container_active: {
-    backgroundColor: 'white',
-    height: '100%',
-    opacity: 0.05,
-  },
-  // bottom_container: {
-  //   padding: 20,
-  // },
-  name_text: {
-    color: '#000',
-    fontSize: 24,
-    marginBottom: 20,
-    alignSelf: 'center',
-  },
-  other_info_container: {
-    background: '#EDEDED',
-    borderRadius: 8,
-    width: '100%',
-    padding: 15,
-    marginBottom: 15,
-  },
-  other_info_text: {
-    background: '#FFD5B0',
-    borderRadius: 10,
-    color: 'black',
-    paddingVertical: 6,
-    paddingHorizontal: 14,
-    fontSize: 14,
-  },
-  top_divider: {
-    width: 251,
-    height: 9,
-    alignSelf: 'center',
-    marginTop: 15,
-    backgroundColor: '#D9D9D9',
-    borderRadius: 10,
-  },
-  main_info_text: {
-    color: '#7C7C7C',
-    fontSize: 16,
-    marginBottom: 15,
-  },
-  main_info_text_field: {
-    color: '#000',
-    fontSize: 16,
-    marginBottom: 15,
-  },
-  main_info_container: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '100%',
-  },
-  additional_info_text: {
-    color: '#000',
-    fontSize: 15,
-    marginBottom: 20,
-  },
-});
+

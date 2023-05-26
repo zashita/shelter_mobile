@@ -1,13 +1,14 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Avatar, Button, Card, Text } from 'react-native-paper';
 import NewsExample from '../assets/img/NewsExample.png'
 import News from '../store/News'
-import {ScrollView, StyleSheet} from "react-native";
+import {ScrollView, StyleSheet, View} from "react-native";
 import {INewsItem} from "../types/NewsItem";
 import animals from "../store/Animals";
 import search from "../store/Search";
 import {observer} from "mobx-react-lite";
 import server from "../server";
+
 
 
 export interface NewsListProps{
@@ -26,6 +27,11 @@ const NewsList:React.FC<NewsListProps> = observer(({navigation}) => {
 
     const NewsViewList = [...filteredNews].map((newsItem)=>{
 
+
+
+
+
+
         return(
             <Card
                 key={newsItem.id}
@@ -33,11 +39,17 @@ const NewsList:React.FC<NewsListProps> = observer(({navigation}) => {
                 contentStyle={style.content}
                 onPress={() => OpenNewsItem(newsItem)}>
                 <Card.Cover source={{uri: server.image + newsItem.photo}} style={style.cover}/>
-                <Card.Content>
-                    <Text style={style.date}>{newsItem.created_at}</Text>
-                    <Text style={style.title}>{newsItem.label}</Text>
-                    <Text style={style.text}>{newsItem.description}</Text>
-                </Card.Content>
+                <View style={style.contentCard}>
+                    <View style = {style.blockLocation}>
+                        <Text style={style.date}>{newsItem.created_at}</Text>
+                    </View>
+                    <View style = {style.block}>
+                        <Text style={style.title}>{newsItem.label}</Text>
+                    </View>
+                    <View style = {style.block}>
+                        <Text style={style.text}>{newsItem.description}</Text>
+                    </View>
+                </View>
 
             </Card>
         )
@@ -57,6 +69,11 @@ const style = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
     },
+    contentCard: {
+        paddingLeft: 10,
+        paddingVertical: 5,
+        flex: 1,
+    },
     card: {
         backgroundColor: '#FFFFFF',
         boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.25)',
@@ -68,16 +85,23 @@ const style = StyleSheet.create({
         width: 170,
         height: 210,
     },
+    block:{
+      flex: 1,
+    },
+    blockLocation:{
+        flex: 1,
+        maxHeight: 45
+    },
     title: {
         fontFamily: 'Inter',
         fontStyle: 'normal',
         fontWeight: '600',
         fontSize: 16,
-        lineHeight: 19,
+        lineHeight: 18,
         color: '#000000',
-        width: 140,
+        // width: 140,
         marginBottom: 20,
-        maxHeight: 60
+        // maxHeight: 60
     },
     text: {
         fontFamily: 'Inter',
@@ -85,7 +109,7 @@ const style = StyleSheet.create({
         fontWeight: '400',
         fontSize: 12,
         lineHeight: 15,
-        width: 140,
+        // width: 140,
         color: '#6A6D76',
         maxHeight: 85,
     },
@@ -97,6 +121,6 @@ const style = StyleSheet.create({
         lineHeight: 12,
         color: '#6A6D76',
         marginBottom: 30,
-        marginLeft: 100,
+        alignSelf: "flex-end",
     },
 });

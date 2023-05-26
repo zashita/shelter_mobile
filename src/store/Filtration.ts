@@ -1,6 +1,5 @@
 import {IAnimal} from "../types/Animal";
 import {makeAutoObservable} from "mobx";
-import axios from "axios";
 import typeFilters from "../components/TypeFilters";
 
 class Filters{
@@ -69,6 +68,15 @@ class Filters{
 }
   setMaxAge (newValue: number){
     this.ageMax = newValue
+  }
+
+  async clearFilters(){
+    this.typeFilters = [];
+    this.sex = null;
+    this.sterialized = false;
+    this.vaccinated = false;
+    this.ageMax =20;
+    this.ageMin = 0;
   }
 
 }

@@ -16,8 +16,8 @@ export default Wrapper;
 
 const styles = StyleSheet.create({
   wrapper: {
-    width: '85%',
-    marginVertical: 26,
-    marginHorizontal: WIDTH - WIDTH * 0.93,
+    flex: 1,
+    marginTop: 26,
+    marginHorizontal: 26
   },
 });

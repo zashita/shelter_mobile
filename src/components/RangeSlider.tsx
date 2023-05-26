@@ -61,7 +61,6 @@ const RangeSlider:React.FC<RangeSliderProps> = observer(({min, max, onChange, st
                         ? MAX_WIDTH
                         : context.startX + event.translationX;
 
-
         },
         onEnd: ()=>{
             runOnJS(onChange)({min: `${Math.round((min + (xKnob1.value/MAX_WIDTH) * (max - min)) / steps) * steps}`,
@@ -126,7 +125,8 @@ const style = StyleSheet.create({
         padding: 0,
         borderColor: '#cccdb2',
         width: WIDTH,
-        borderRadius: 20
+        borderRadius: 20,
+        height: 20
     },
     labelsContainer:{
         width: TRACK_WIDTH,

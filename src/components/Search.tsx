@@ -6,6 +6,7 @@ import {Button} from "react-native-paper";
 import Navigation from "../store/Navigation"
 import {observer} from "mobx-react-lite";
 import search from "../store/Search";
+import {useRoute} from "@react-navigation/native";
 
 export interface ISearchProps{
     navigation: any;
@@ -13,6 +14,7 @@ export interface ISearchProps{
 
 
 const Search = observer((props: ISearchProps) => {
+    const route = useRoute();
     const [text, setText] = useState('')
     const openFilters = () =>{
         props.navigation.navigate('Filters')
@@ -29,15 +31,18 @@ const Search = observer((props: ISearchProps) => {
           onChangeText={e => search.setSearchString(e)}
           value={search.searchString}
       />
-        {
-            Navigation.currentScreen === "Home"?
-            <View>
-                <Button icon={FiltrSVG} onPress={openFilters}>
 
-                </Button>
-            </View>:
-                <View></View>
-        }
+
+        <View style={styles.filtrBlock}>
+            {
+                route.name === "Main"?
+                        <Button icon={FiltrSVG} onPress={openFilters}>
+
+                        </Button>
+                    :
+                    <View></View>
+            }
+        </View>
 
 
 
@@ -54,12 +59,19 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         borderRadius: 30,
         flexDirection: 'row',
-        height: 40,
+        height: 45,
         marginBottom: 31,
         alignItems: 'center',
     },
+    filtrBlock:{
+        width: 35,
+        height: 35,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
     input: {
-        width: '75%',
+        flex: 1,
         backgroundColor: '#fff',
         fontSize: 15,
         fontWeight: '400',

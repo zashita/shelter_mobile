@@ -1,6 +1,6 @@
 import React from 'react';
 import Wrapper from "../components/Wrapper";
-import {Image, StyleSheet, View} from "react-native";
+import {Image, ScrollView, StyleSheet, View} from "react-native";
 import {Button, Text} from "react-native-paper";
 import News from "../store/News"
 import server from "../server";
@@ -14,9 +14,7 @@ export interface NewsDescProps{
 const NewsDescription:React.FC<NewsDescProps> = observer(({navigation}) => {
     return (
         <>
-            <View style={style.top_divider}>
-
-            </View>
+            <ScrollView>
         <View style={style.top_container}>
             <View style={style.button}>
                 <Button icon={Back}
@@ -24,6 +22,7 @@ const NewsDescription:React.FC<NewsDescProps> = observer(({navigation}) => {
                 </Button>
             </View>
         </View>
+
         <Wrapper>
             <Image
                 source={{uri: server.image + News.currentNewsItem.photo}}
@@ -35,6 +34,7 @@ const NewsDescription:React.FC<NewsDescProps> = observer(({navigation}) => {
                 {News.currentNewsItem.description}
             </Text>
         </Wrapper>
+            </ScrollView>
         </>
     );
 })

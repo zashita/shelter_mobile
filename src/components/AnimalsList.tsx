@@ -70,7 +70,7 @@ const AnimalsList = observer((props: IAnimalListProps) => {
               <Text style={styles.location_text}>{animal.shelter}</Text>
             </View>
           </View>
-          <View onTouchEnd={() => Liked(animal.id)} style={styles.like_img}>
+          <View onTouchEnd={() => Liked(animal.id)} style={styles.like_container}>
             {
               liked.likedState(animal.id)?<LikedActiveSvg/>: <LikeSVG/>
             }
@@ -89,7 +89,7 @@ export default AnimalsList;
 
 const styles = StyleSheet.create({
   card: {
-    width: '100%',
+    flex: 1,
     height: 200,
     display: 'flex',
     flexDirection: 'row',
@@ -98,24 +98,27 @@ const styles = StyleSheet.create({
     boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.25)',
     borderRadius: 10,
     marginBottom: 25,
+    paddingRight: 12,
   },
   info_container: {
-    width: 169,
-    height: '100%',
+    // width: 169,
+    // height: '100%',
+    flex: 1,
     backgroundColor: '#FFFFFF',
     paddingTop: 42,
-    paddingRight: 12,
+
     paddingBottom: 12,
     paddingLeft: 12,
   },
   info_line: {
-    width: '100%',
+    flex: 1,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
   location: {
+    flex: 1,
     display: 'flex',
     flexDirection: 'row',
     columnGap: 10,
@@ -174,7 +177,11 @@ const styles = StyleSheet.create({
     color: '#7C7C7C',
   },
   like_img: {
-    marginTop: 10,
-    marginLeft: 120,
+    position: "relative",
   },
+  like_container:{
+    flex: 1,
+    marginTop: 10,
+    alignItems: "flex-end"
+  }
 });

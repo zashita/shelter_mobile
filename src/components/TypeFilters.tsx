@@ -63,12 +63,14 @@ const style = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     columnGap: 20,
-    marginBottom: 20
+    marginBottom: 20,
+    maxHeight: 43,
+    alignSelf: "center"
   },
   secondLine:{
     display: 'flex',
     flexDirection: 'row',
     columnGap: 20,
-    marginBottom: 40
+    marginBottom: 40,
   },
 })

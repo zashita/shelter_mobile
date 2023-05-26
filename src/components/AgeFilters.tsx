@@ -48,7 +48,7 @@ const AgeFilters = observer(() => {
           />
 
       </View>
-      <View style = {{marginBottom: 40, flex: 1, flexDirection: 'row'}}>
+      <View style = {{maxHeight: 50, flex: 1, flexDirection: 'row'}}>
         <RangeSlider min={0} max={20} onChange={(range : any) => onChange(range)} title={'age'} steps={1}/>
       </View>
     </>

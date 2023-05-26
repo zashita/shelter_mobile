@@ -16,7 +16,8 @@ const FilterButton:React.FC<FilterButtonProps> = (
       buttonColor={active?'#FF9D01':'#FFf'}
       textColor={'#000'}
       mode = {'contained'}
-      onPress={onPress}>
+      onPress={onPress}
+    style={{flex: 1}}>
       {text}
     </Button>
   );

@@ -52,7 +52,7 @@ return(
                 >
                     <Circle
                         center={{lat: animals.lat, lon: animals.lon}}
-                        radius={15}
+                        radius={9}
                         fillColor={'#FF0000'}
                         strokeColor={'#FF0000'}
                         strokeWidth={4}

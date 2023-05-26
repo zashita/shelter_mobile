@@ -8,9 +8,9 @@ import {ActivityIndicator} from "react-native-paper";
 import AnimalsList from "../components/AnimalsList";
 import AnimalsArr from "../store/Animals";
 import Navbar from "../components/Navbar";
-import Navigation from '../store/Navigation';
 import GiftWhiteSVG from '../assets/img/GiftWhite.svg';
 import LikeWhiteSVG from '../assets/img/LikeWhite.svg';
+import {useRoute} from "@react-navigation/native";
 
 const HEIGHT = Dimensions.get('screen').height
 
@@ -20,30 +20,31 @@ export interface MainLayoutProps{
 }
 
 const MainLayout:React.FC<MainLayoutProps> = ({navigation, children}) => {
+    const route = useRoute();
     return (
         <View style={styles.background}>
             <View style={styles.location_block}>
                 <View style={styles.location_image}>
                     {
-                        Navigation.currentScreen === 'Home'
-                        || Navigation.currentScreen === 'Info'?
+                        route.name === 'Main'
+                        || route.name === 'News'?
                             <LocationSVG/>:
                             <View></View>
                     }
                     {
-                        Navigation.currentScreen === 'Gift'?
+                        route.name === 'Gifts'?
                             <GiftWhiteSVG/>:
                             <View></View>
                     }
                     {
-                        Navigation.currentScreen === 'Like'?
+                        route.name === 'Liked'?
                             <LikeWhiteSVG/>:
                             <View></View>
                     }
                 </View>
                 {
-                    Navigation.currentScreen === 'Home'
-                    || Navigation.currentScreen === 'Info'?
+                    route.name === 'Main'
+                    || route.name === 'News'?
                         <>
                             <Text style= {{color: '#000'}}>Минск, </Text>
                             <Text>Беларусь</Text>
@@ -51,12 +52,12 @@ const MainLayout:React.FC<MainLayoutProps> = ({navigation, children}) => {
                         <View></View>
                 }
                 {
-                    Navigation.currentScreen === 'Gift'?
+                    route.name === 'Gifts'?
                         <Text>Пожертвования</Text>:
                         <View></View>
                 }
                 {
-                    Navigation.currentScreen === 'Like'?
+                    route.name === 'Liked'?
                         <Text>Понравились</Text>:
                         <View></View>
                 }
@@ -79,6 +80,7 @@ export default MainLayout;
 const styles = StyleSheet.create({
     background:{
         backgroundColor: `#FF9D01`,
+        flex: 1
 
     },
     location_block:{
@@ -99,7 +101,7 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
     main_block: {
-        height: 0.847 * HEIGHT,
+        flex: 1,
         backgroundColor: `#F4F4F4`,
         borderRadius: 40,
     },

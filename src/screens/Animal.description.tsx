@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Image, SafeAreaView, StyleSheet, Text, View} from "react-native";
+import {Image, SafeAreaView, ScrollView, StyleSheet, Text, View} from "react-native";
 import {Button} from "react-native-paper";
 import animals from '../store/Animals';
 import ShareSVG from  '../assets/img/Vector 2.svg'
@@ -32,10 +32,7 @@ const AnimalDescription:React.FC<AnimalDescProps> = observer(({navigation}) => {
 
   return (
       <>
-    <View style={SliderActive? style.global_container_active: style.global_container}>
-      <View style={style.top_divider}>
-
-      </View>
+    <ScrollView style={SliderActive? style.global_container_active: style.global_container}>
     <View style={style.top_container}>
       <Button icon={ShareSVG}
               mode="contained"
@@ -125,7 +122,7 @@ const AnimalDescription:React.FC<AnimalDescProps> = observer(({navigation}) => {
 
 
       </View>
-    </View>
+    </ScrollView>
         {
           SliderActive? <AnimalSlider sliderActive={SliderActive} setSliderActive={setSliderActive}/>:
               <View/>

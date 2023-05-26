@@ -12,6 +12,7 @@ import {Button} from "react-native-paper";
 import {observer} from "mobx-react-lite";
 import Navigation from "../store/Navigation";
 import search from "../store/Search";
+import {useRoute} from "@react-navigation/native";
 
 export interface NavbarProps{
     navigation: any;
@@ -21,25 +22,23 @@ const HEIGHT = Dimensions.get('screen').height;
 
 const Navbar:React.FC<NavbarProps> = observer(({navigation}) => {
 
+    const route = useRoute()
+
     const goHome = () =>{
-        Navigation.setCurrentScreen('Home')
         navigation.navigate('Main');
 
     }
 
     const goInfo = () =>{
-        Navigation.setCurrentScreen('Info')
         navigation.navigate('News')
 
     }
     const goGifts = () =>{
-        Navigation.setCurrentScreen('Gift')
         navigation.navigate('Gifts')
 
     }
 
     const goLiked = () =>{
-        Navigation.setCurrentScreen('Like')
         navigation.navigate('Liked')
     }
 
@@ -49,23 +48,23 @@ const Navbar:React.FC<NavbarProps> = observer(({navigation}) => {
     <View style={style.bar}>
       <View style={style.icons_container}>
           <Button icon={
-              Navigation.currentScreen === "Home"?
+              route.name === "Main"?
               HomeActiveSVG: HomeSVG}
                   style = {{justifyContent: 'center'}}
           onPress={goHome}>
 
           </Button>
-          <Button icon={Navigation.currentScreen === "Info"?
+          <Button icon={route.name === "News"?
               InfoActiveSVG: InfoSVG} style = {{justifyContent: 'center'}}
           onPress={goInfo}>
 
           </Button>
-          <Button icon={Navigation.currentScreen === "Gift"?
+          <Button icon={route.name === "Gifts"?
               GiftActiveSVG: GiftSVG}  style = {{justifyContent: 'center'}}
           onPress={goGifts}>
 
           </Button>
-          <Button icon={Navigation.currentScreen === "Like"?
+          <Button icon={route.name === "Liked"?
               LikeActiveSVG: LikeSVG}  style = {{justifyContent: 'center'}}
           onPress={goLiked}>
 
@@ -79,21 +78,23 @@ export default Navbar;
 
 const style = StyleSheet.create({
     bar: {
-    width: '100%',
-    height: 50,
+    flex: 1,
+    // width: Dimensions.get('window').width,
+    maxHeight: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    position: 'absolute',
+    // position: 'absolute',
     borderRadius: 10,
     backgroundColor: '#fff',
     borderBottomColor: '#EE7100',
     borderBottomWidth: 3,
-    bottom: 0
+    bottom: 0,
+    paddingHorizontal: 36
 },
 icons_container: {
     display: 'flex',
     flexDirection: 'row',
     columnGap: 35,
-    width: '85%',
+    flex: 1
 }
 })
